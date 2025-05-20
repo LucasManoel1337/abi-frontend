@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt">
+    
+<head>
+    <meta charset="UTF-8" />
+    <title>AIB - Menu Principal com Idiomas</title>
+    <script src="js/scriptIndex.js" defer></script>
+    <link rel="stylesheet" href="css/styleIndex.css" />
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-container" aria-label="Logo do Projeto AIB">
+            <img src="assets/images/AIBicon.png" alt="Logo AIB" />
+            <h1>AIB</h1>
+        </div>
+
+        <nav role="navigation" aria-label="Menu principal">
+            <a href="SobreProjeto.html" data-key="sobre">Sobre o projeto</a>
+            <a href="Guia.html" data-key="guia">Guia</a>
+            <a href="Empresas.html" data-key="empresas">Empresas</a>
+            <a href="Bolsas.html" data-key="bolsas">Bolsas</a>
+            <a href="Psicologia.html" data-key="psicologia">Psicologia</a>
+            <a href="Saude.html" data-key="saude">Saúde</a>
+        </nav>
+
+        <div class="user-area">
+            <div class="language-selector" tabindex="0" aria-label="Selecionar idioma" role="button"
+                aria-haspopup="listbox" aria-expanded="false">
+                <img src="https://flagcdn.com/br.svg" alt="Português (Brasil)" id="flag-img" />
+                <span id="language-name">Português</span>
+                <i class="arrow"></i>
+                <div class="language-options" role="listbox" aria-labelledby="language-name">
+                    <div data-lang="pt" role="option" tabindex="0"><img src="https://flagcdn.com/br.svg"
+                            alt="Português (Brasil)" /> Português</div>
+                    <div data-lang="en" role="option" tabindex="0"><img src="https://flagcdn.com/us.svg"
+                            alt="English (US)" /> English</div>
+                    <div data-lang="es" role="option" tabindex="0"><img src="https://flagcdn.com/es.svg"
+                            alt="Español" /> Español</div>
+                    <div data-lang="fr" role="option" tabindex="0"><img src="https://flagcdn.com/fr.svg"
+                            alt="Français" /> Français</div>
+                    <div data-lang="de" role="option" tabindex="0"><img src="https://flagcdn.com/de.svg"
+                            alt="Deutsch" /> Deutsch</div>
+                    <div data-lang="it" role="option" tabindex="0">
+                        <img src="https://flagcdn.com/it.svg" alt="Italiano" /> Italiano
+                    </div>
+                    <div data-lang="ja" role="option" tabindex="0">
+                        <img src="https://flagcdn.com/jp.svg" alt="日本語" /> 日本語
+                    </div>
+                    <div data-lang="ru" role="option" tabindex="0">
+                        <img src="https://flagcdn.com/ru.svg" alt="Русский" /> Русский
+                    </div>
+                    <div data-lang="zh" role="option" tabindex="0">
+                        <img src="https://flagcdn.com/cn.svg" alt="中文" /> 中文
+                    </div>
+                    <div data-lang="ar" role="option" tabindex="0" dir="rtl">
+                        <img src="https://flagcdn.com/sa.svg" alt="العربية" /> العربية
+                    </div>
+                </div>
+            </div>
+
+            <svg class="user-icon" role="button" aria-label="Área do usuário - Login ou Logout" tabindex="0"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+            </svg>
+
+            <div class="user-dropdown" role="menu" aria-hidden="true">
+                <button data-key="loginTitle" id="btnLogin" role="menuitem">Logar</button>
+                <button id="btnLogout" role="menuitem" style="display:none;" data-key="deslogarTitle">Deslogar</button>
+            </div>
+        </div>
+    </header>
+    <section>
+        <p>Teste tela psicologia</p>
+    </section>
+</body>
+
+</html>

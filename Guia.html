@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>AIB - Menu Principal com Idiomas</title>
+    <script src="js/scriptIndex.js" defer></script>
+    <link rel="stylesheet" href="css/styleGuia.css" />
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-container" aria-label="Logo do Projeto AIB">
+            <img src="assets/images/AIBicon.png" alt="Logo AIB" />
+            <h1>AIB</h1>
+        </div>
+
+        <nav role="navigation" aria-label="Menu principal">
+            <a href="SobreProjeto.html" data-key="sobre">Sobre o projeto</a>
+            <a href="Guia.html" data-key="guia">Guia</a>
+            <a href="Empresas.html" data-key="empresas">Empresas</a>
+            <a href="Bolsas.html" data-key="bolsas">Bolsas</a>
+            <a href="Psicologia.html" data-key="psicologia">Psicologia</a>
+            <a href="Saude.html" data-key="saude">Saúde</a>
+        </nav>
+
+        <div class="user-area">
+            <div class="language-selector" tabindex="0" aria-label="Selecionar idioma" role="button"
+                aria-haspopup="listbox" aria-expanded="false">
+                <img src="https://flagcdn.com/br.svg" alt="Português (Brasil)" id="flag-img" />
+                <span id="language-name">Português</span>
+                <i class="arrow"></i>
+                <div class="language-options" role="listbox" aria-labelledby="language-name">
+                    <div data-lang="pt" role="option" tabindex="0"><img src="https://flagcdn.com/br.svg"
+                            alt="Português (Brasil)" /> Português</div>
+                    <div data-lang="en" role="option" tabindex="0"><img src="https://flagcdn.com/us.svg"
+                            alt="English (US)" /> English</div>
+                    <div data-lang="es" role="option" tabindex="0"><img src="https://flagcdn.com/es.svg"
+                            alt="Español" /> Español</div>
+                    <div data-lang="fr" role="option" tabindex="0"><img src="https://flagcdn.com/fr.svg"
+                            alt="Français" /> Français</div>
+                    <div data-lang="de" role="option" tabindex="0"><img src="https://flagcdn.com/de.svg"
+                            alt="Deutsch" /> Deutsch</div>
+                    <div data-lang="it" role="option" tabindex="0">
+                        <img src="https://flagcdn.com/it.svg" alt="Italiano" /> Italiano
+                    </div>
+                    <div data-lang="ja" role="option" tabindex="0">
+                        <img src="https://flagcdn.com/jp.svg" alt="日本語" /> 日本語
+                    </div>
+                    <div data-lang="ru" role="option" tabindex="0">
+                        <img src="https://flagcdn.com/ru.svg" alt="Русский" /> Русский
+                    </div>
+                    <div data-lang="zh" role="option" tabindex="0">
+                        <img src="https://flagcdn.com/cn.svg" alt="中文" /> 中文
+                    </div>
+                    <div data-lang="ar" role="option" tabindex="0" dir="rtl">
+                        <img src="https://flagcdn.com/sa.svg" alt="العربية" /> العربية
+                    </div>
+                </div>
+            </div>
+
+            <svg class="user-icon" role="button" aria-label="Área do usuário - Login ou Logout" tabindex="0"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+            </svg>
+
+            <div class="user-dropdown" role="menu" aria-hidden="true">
+                <button data-key="loginTitle" id="btnLogin" role="menuitem">Logar</button>
+                <button id="btnLogout" role="menuitem" style="display:none;" data-key="deslogarTitle">Deslogar</button>
+            </div>
+        </div>
+    </header>
+    <section class="guia-imigrante">
+        <div class="intro">
+            <h2>Guia do Imigrante</h2>
+            <p>
+                Este guia foi criado para te acompanhar nos primeiros passos no Brasil, ajudando com documentação,
+                moradia, emprego, estudo, saúde e muito mais. <br />
+                A plataforma <strong>AIB</strong> oferece suporte gratuito e conectividade com empresas, bolsas de
+                estudo, atendimento psicológico e orientação em parceria com universidades.
+            </p>
+        </div>
+
+        <div class="etapas-container">
+            <div class="etapa">
+                <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Documentação" />
+                <h3>1. Regularização e Documentação</h3>
+                <p>
+                    Inicie seu processo de regularização junto à <a href="https://www.gov.br/pf/pt-br"
+                        target="_blank">Polícia Federal</a>. Você poderá solicitar refúgio, residência temporária ou
+                    permanente. Guarde o protocolo da solicitação, pois ele garante direitos básicos até a aprovação
+                    final.
+                </p>
+            </div>
+
+            <div class="etapa">
+                <img src="https://cdn-icons-png.flaticon.com/512/1041/1041882.png" alt="CPF" />
+                <h3>2. Obtenha seu CPF</h3>
+                <p>
+                    O CPF é necessário para abrir conta, trabalhar ou estudar. Solicite presencialmente nos Correios ou
+                    pela internet no site da <a href="https://www.gov.br/receitafederal" target="_blank">Receita
+                        Federal</a>.
+                </p>
+            </div>
+
+            <div class="etapa">
+                <img src="https://cdn-icons-png.flaticon.com/512/2164/2164810.png" alt="Conta bancária" />
+                <h3>3. Abrir Conta Bancária</h3>
+                <p>
+                    Após obter o CPF, você pode abrir conta em bancos digitais como Nubank ou em agências físicas
+                    (Caixa, Itaú, etc.). Isso facilitará receber salários ou bolsas.
+                </p>
+            </div>
+
+            <div class="etapa">
+                <img src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png" alt="Moradia" />
+                <h3>4. Moradia</h3>
+                <p>
+                    Procure opções acessíveis em sites como OLX, Viva Real e em grupos de apoio nas redes sociais.
+                    Estamos trabalhando com instituições que também oferecem acolhimento temporário.
+                </p>
+            </div>
+
+            <div class="etapa">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Emprego" />
+                <h3>5. Trabalho e Renda</h3>
+                <p>
+                    Você pode conferir <a href="/empresas.html">empresas parceiras</a> com vagas voltadas para imigrantes,
+                    inclusive sem exigência de diploma. Nossa plataforma conecta você diretamente às oportunidades
+                    disponíveis e permite candidaturas online.
+                </p>
+            </div>
+
+            <div class="etapa">
+                <img src="https://cdn-icons-png.flaticon.com/512/387/387558.png" alt="Estudo" />
+                <h3>6. Educação e Bolsas</h3>
+                <p>
+                    Imigrantes têm direito à educação básica gratuita. Além disso, você pode acessar o nosso <a
+                        href="/bolsas.html">sistema de bolsas</a>, com cursos técnicos, idiomas (inclusive Português),
+                    informática, edição de vídeo e muito mais. Tudo oferecido por instituições parceiras e acessível
+                    pela plataforma.
+                </p>
+            </div>
+
+            <div class="etapa">
+                <img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png" alt="Saúde" />
+                <h3>7. Saúde e Bem-estar</h3>
+                <p>
+                    Você pode ser atendido pelo <strong>SUS</strong> gratuitamente. Em nossa plataforma, você também
+                    pode solicitar suporte básico no <a href="/saude.html">sistema de saúde</a>, prestado por estudantes de
+                    faculdades de medicina parceiras, com supervisão. Casos complexos serão encaminhados para clínicas e
+                    hospitais especializados.
+                </p>
+            </div>
+
+            <div class="etapa">
+                <img src="https://cdn-icons-png.flaticon.com/512/1029/1029183.png" alt="Psicologia" />
+                <h3>8. Apoio Psicológico</h3>
+                <p>
+                    O impacto emocional da migração pode ser grande. No módulo de <a href="/psicologia.html">Apoio
+                        Psicológico</a>, você pode agendar atendimento com estudantes de psicologia de faculdades
+                    parceiras. Casos mais delicados serão acompanhados e encaminhados a profissionais especializados.
+                </p>
+            </div>
+
+            <div class="etapa">
+                <img src="https://cdn-icons-png.flaticon.com/512/1534/1534033.png" alt="Transporte" />
+                <h3>9. Transporte Público</h3>
+                <p>
+                    Transporte coletivo (ônibus, metrô e trem) está disponível na maioria das cidades. Verifique se sua
+                    cidade oferece passe livre ou tarifa social. Use apps como Moovit para planejar suas rotas.
+                </p>
+            </div>
+
+            <div class="etapa">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828479.png" alt="Direitos" />
+                <h3>10. Direitos e Deveres</h3>
+                <p>
+                    Você tem direito à saúde, educação, trabalho e liberdade religiosa. Em contrapartida, é importante
+                    respeitar as leis locais e conviver em harmonia com a sociedade. A plataforma também oferece suporte
+                    jurídico básico em breve.
+                </p>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>AIB - Cadastro</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <img src="assets/images/AIBicon.png" alt="Logo AIB" class="logo" />
+      <h1>AIB – Auxílio Imigrativo Brasileiro</h1>
+      <div class="lang-select">
+        <img id="flag" src="https://flagcdn.com/w40/br.png" alt="bandeira" />
+        <select id="language">
+          <option value="pt">Português</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="ar">العربية</option>
+          <option value="de">Alemão</option>
+          <option value="it">Italiano</option>
+          <option value="ru">Russo</option>
+          <option value="zh">Chinês Simplificado</option>
+          <option value="ja">Japonês</option>
+        </select>
+      </div>
+    </header>
+
+    <main class="card">
+      <h2 data-i18n="registerTitle">Registrar</h2>
+      <form>
+
+        <label for="email" data-i18n="email">E-mail</label>
+        <input type="email" id="email" placeholder="email@exemplo.com" required data-i18n="email" />
+
+        <label for="password" data-i18n="password">Senha</label>
+        <input type="password" id="password" placeholder="••••••••" required />
+
+        <label for="confirm-password" data-i18n="confirmPassword">Confirmar senha</label>
+        <input type="password" id="confirm-password" placeholder="••••••••" required />
+
+        <button type="submit" class="login-btn" data-i18n="registerBtn">Criar conta</button>
+      </form>
+
+      <p class="switch" data-i18n="haveAccount">
+        Já tem uma conta? <a href="Login.html">Entre aqui</a>
+      </p>
+
+      <p class="voltar" data-i18n="voltar">
+        <a href="Index.html">Voltar ao menu principal</a>
+      </p>
+
+    </main>
+  </div>
+</body>
+</html>

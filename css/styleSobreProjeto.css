@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+    color: #333;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #004466;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    gap: 15px;
+}
+
+/* Logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: default;
+}
+
+.logo-container img {
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+}
+
+.logo-container h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    user-select: none;
+}
+
+/* Menu de abas */
+nav {
+    display: flex;
+    gap: 25px;
+    font-weight: 600;
+    flex: 1;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: background-color 0.25s ease;
+}
+
+nav a:hover {
+    background-color: #006699;
+}
+
+/* Seletor de idioma */
+.language-selector {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    color: white;
+    font-weight: 600;
+    border: 1.5px solid white;
+    border-radius: 5px;
+    padding: 4px 8px;
+    min-width: 100px;
+}
+
+.language-selector img {
+    height: 20px;
+    width: 28px;
+    object-fit: cover;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}
+
+.language-selector .arrow {
+    margin-left: auto;
+    border: solid white;
+    border-width: 0 2.5px 2.5px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.language-selector.open .arrow {
+    transform: rotate(-135deg);
+}
+
+.language-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    color: black;
+    border-radius: 5px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 4px;
+    overflow: hidden;
+    display: none;
+    z-index: 20;
+    min-width: 100%;
+}
+
+.language-options.open {
+    display: block;
+}
+
+.language-options div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+.language-options div:hover {
+    background-color: #f0f0f0;
+}
+
+/* Ícone usuário */
+.user-area {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-icon {
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    fill: white;
+    transition: fill 0.3s ease;
+    user-select: none;
+}
+
+.user-icon:hover {
+    fill: #00aaff;
+}
+
+/* Dropdown do usuário */
+.user-dropdown {
+    position: absolute;
+    right: 0;
+    top: 110%;
+    background: white;
+    color: #004466;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+    min-width: 140px;
+    display: none;
+    flex-direction: column;
+    z-index: 30;
+    user-select: none;
+}
+
+.user-dropdown.open {
+    display: flex;
+}
+
+.user-dropdown button {
+    background: transparent;
+    border: none;
+    padding: 12px 18px;
+    font-size: 1rem;
+    color: #004466;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+    width: 100%;
+}
+
+.user-dropdown button:hover {
+    background-color: #e0f0ff;
+}
+
+/* Responsive */
+@media(max-width: 700px) {
+    nav {
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+
+    .logo-container h1 {
+        font-size: 1.1rem;
+    }
+
+    .language-selector {
+        min-width: 90px;
+        padding: 4px 6px;
+    }
+}
+
+
+
+.sobre-projeto {
+  padding: 3rem 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.sobre-projeto h2,
+.sobre-projeto h3 {
+  color: #005b96;
+  margin-bottom: 1rem;
+}
+
+.sobre-projeto .intro,
+.sobre-projeto .seguranca,
+.sobre-projeto .chamada-acao {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.botao {
+  display: inline-block;
+  margin-top: 1rem;
+  background-color: #0077cc;
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.botao:hover {
+  background-color: #005b96;
+}

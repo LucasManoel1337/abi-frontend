@@ -1,0 +1,18 @@
+{
+  "loginTitle": "登录",
+  "email": "电子邮件",
+  "password": "密码",
+  "loginBtn": "登录",
+  "noAccount": "没有账户？ <a href='Register.html'>在这里注册</a>",
+  "voltar": "<a href='Index.html'>返回主菜单</a>",
+  "registerTitle": "注册",
+  "confirmPassword": "确认密码",
+  "registerBtn": "创建账户",
+  "haveAccount": "已有账户？ <a href='Login.html'>在这里登录</a>",
+  "sobre": "关于项目",
+    "guia": "指南",
+    "empresas": "公司",
+    "bolsas": "奖学金",
+    "psicologia": "心理学",
+    "saude": "健康"
+}

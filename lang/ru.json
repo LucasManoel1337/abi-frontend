@@ -1,0 +1,18 @@
+{
+  "loginTitle": "Войти",
+  "email": "Электронная почта",
+  "password": "Пароль",
+  "loginBtn": "Войти",
+  "noAccount": "Нет аккаунта? <a href='Register.html'>Зарегистрируйтесь здесь</a>",
+  "voltar": "<a href='Index.html'>Вернуться в главное меню</a>",
+  "registerTitle": "Регистрация",
+  "confirmPassword": "Подтвердите пароль",
+  "registerBtn": "Создать аккаунт",
+  "haveAccount": "Уже есть аккаунт? <a href='Login.html'>Войти здесь</a>",
+  "sobre": "О проекте",
+    "guia": "Руководство",
+    "empresas": "Компании",
+    "bolsas": "Стипендии",
+    "psicologia": "Психология",
+    "saude": "Здоровье"
+}

@@ -1,0 +1,155 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #004466;
+  color: white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 40px;
+}
+
+.card {
+  background-color: white;
+  padding: 2em;
+  max-width: 400px;
+  margin: 2em auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+input, select, button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #c2f0f5, #fef9e7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 650px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.header {
+  background: #143d59;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.header h1 {
+  font-size: 16px;
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+.lang-select {
+  display: flex;
+  align-items: center;
+}
+
+.lang-select select {
+  margin-left: 5px;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.card {
+  padding: 25px;
+}
+
+.card h2 {
+  color: #143d59;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #eef4ff;
+}
+
+.login-btn {
+  background-color: #f4c400;
+  color: #143d59;
+  padding: 12px;
+  margin-top: 20px;
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.switch {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.voltar {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* fade in/out */
+.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Mantém container oculto no início (se quiser evitar piscar) */
+body {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}

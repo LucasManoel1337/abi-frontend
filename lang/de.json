@@ -1,0 +1,18 @@
+{
+  "loginTitle": "Anmelden",
+  "email": "E-Mail",
+  "password": "Passwort",
+  "loginBtn": "Zugreifen",
+  "noAccount": "Noch kein Konto? <a href='Register.html'>Hier registrieren</a>",
+  "voltar": "<a href='Index.html'>Zurück zum Hauptmenü</a>",
+  "registerTitle": "Registrieren",
+  "confirmPassword": "Passwort bestätigen",
+  "registerBtn": "Konto erstellen",
+  "haveAccount": "Schon ein Konto? <a href='Login.html'>Hier anmelden</a>",
+  "sobre": "Über das Projekt",
+  "guia": "Leitfaden",
+  "empresas": "Firmen",
+  "bolsas": "Stipendien",
+  "psicologia": "Psychologie",
+  "saude": "Gesundheit"
+}

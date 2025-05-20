@@ -1,0 +1,18 @@
+{
+  "loginTitle": "ログイン",
+  "email": "メールアドレス",
+  "password": "パスワード",
+  "loginBtn": "ログイン",
+  "noAccount": "アカウントをお持ちでないですか？ <a href='Register.html'>ここで登録</a>",
+  "voltar": "<a href='Index.html'>メインメニューに戻る</a>",
+  "registerTitle": "登録",
+  "confirmPassword": "パスワード確認",
+  "registerBtn": "アカウント作成",
+  "haveAccount": "すでにアカウントをお持ちですか？ <a href='Login.html'>ここでログイン</a>",
+  "sobre": "プロジェクトについて",
+    "guia": "ガイド",
+    "empresas": "企業",
+    "bolsas": "奨学金",
+    "psicologia": "心理学",
+    "saude": "健康"
+}

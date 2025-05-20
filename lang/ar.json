@@ -1,0 +1,18 @@
+{
+  "loginTitle": "تسجيل الدخول",
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "loginBtn": "دخول",
+  "noAccount": "ليس لديك حساب؟ <a href='Register.html'>سجل هنا</a>",
+  "voltar": "<a href='Index.html'>العودة إلى القائمة الرئيسية</a>",
+  "registerTitle": "تسجيل",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "registerBtn": "إنشاء حساب",
+  "haveAccount": "هل لديك حساب؟ <a href='Login.html'>سجل دخول</a>",
+  "sobre": "عن المشروع",
+    "guia": "الدليل",
+    "empresas": "الشركات",
+    "bolsas": "المنح الدراسية",
+    "psicologia": "علم النفس",
+    "saude": "الصحة"
+}
