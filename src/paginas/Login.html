@@ -5,6 +5,7 @@
   <title>AIB - Login</title>
   <link rel="stylesheet" href="../css/style.css" />
   <script src="../js/script.js" defer></script>
+  <script src="../js/login.js" type="module"></script>
 </head>
 <body>
   <div class="container">
@@ -30,15 +31,17 @@
 
     <main class="card">
       <h2 data-i18n="loginTitle">Entrar</h2>
-      <form>
-        <label for="email" data-i18n="email">E-mail</label>
-        <input type="email" id="email" placeholder="email@exemplo.com" required data-i18n="email" />
-
-        <label for="password" data-i18n="password">Senha</label>
-        <input type="password" id="password" placeholder="••••••••" required />
-
-        <button type="submit" class="login-btn" data-i18n="loginBtn">Acessar</button>
-      </form>
+      
+      <!-- input email -->
+      <label for="email" data-i18n="email">E-mail</label>
+      <input type="email" id="inEmail" placeholder="email@exemplo.com" required data-i18n="email" />
+      
+      <!-- input senha -->
+      <label for="password" data-i18n="password">Senha</label>
+      <input type="password" id="inSenha" placeholder="••••••••" required />
+      
+      <!-- botão de logar -->
+      <button class="login-btn" data-i18n="loginBtn" id="btnLogin">Acessar</button>
 
       <p class="switch" data-i18n="noAccount">
         não tem uma conta? <a href="Register.html">Entre aqui</a>

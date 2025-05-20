@@ -5,6 +5,7 @@
   <title>AIB - Cadastro</title>
   <link rel="stylesheet" href="../css/style.css" />
   <script src="../js/script.js" defer></script>
+  <script type="module" src="../js/register.js"></script>
 </head>
 <body>
   <div class="container">
@@ -30,19 +31,17 @@
 
     <main class="card">
       <h2 data-i18n="registerTitle">Registrar</h2>
-      <form>
 
         <label for="email" data-i18n="email">E-mail</label>
-        <input type="email" id="email" placeholder="email@exemplo.com" required data-i18n="email" />
+        <input type="email" id="inEmail" placeholder="email@exemplo.com" required data-i18n="email" />
 
         <label for="password" data-i18n="password">Senha</label>
-        <input type="password" id="password" placeholder="••••••••" required />
+        <input type="password" id="inSenha" placeholder="••••••••" required />
 
         <label for="confirm-password" data-i18n="confirmPassword">Confirmar senha</label>
-        <input type="password" id="confirm-password" placeholder="••••••••" required />
+        <input type="password" id="inConSenha" placeholder="••••••••" required />
 
-        <button type="submit" class="login-btn" data-i18n="registerBtn">Criar conta</button>
-      </form>
+        <button class="login-btn" data-i18n="registerBtn" id="btnCadastrar">Criar conta</button>
 
       <p class="switch" data-i18n="haveAccount">
         Já tem uma conta? <a href="Login.html">Entre aqui</a>
