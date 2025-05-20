@@ -1,3 +1,5 @@
+import { LOGIN } from "./urls";
+
 document.addEventListener('DOMContentLoaded', () => {
             // Seletores principais
             const selectors = {
@@ -82,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Ações de login/logout
             selectors.btnLogin.addEventListener('click', () => {
-                window.location.href = 'Login.html';
+                window.location.replace(LOGIN);
             });
 
             selectors.btnLogout.addEventListener('click', () => {
