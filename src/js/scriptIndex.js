@@ -1,4 +1,4 @@
-import { LOGIN } from "./urls";
+import { LOGIN } from "./urls.js";
 
 document.addEventListener('DOMContentLoaded', () => {
             // Seletores principais
