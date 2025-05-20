@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Carrega traduções de idioma
             async function loadTranslations(lang) {
                 try {
-                    const response = await fetch(`./lang/${lang}.json`);
+                    const response = await fetch(`../lang/${lang}.json`);
                     if (!response.ok) throw new Error("Erro ao carregar traduções");
                     currentTranslations = await response.json();
                     updateTranslatedElements(); // usa a função genérica agora

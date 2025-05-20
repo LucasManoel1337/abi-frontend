@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <title>AIB - Menu Principal com Idiomas</title>
-    <script src="js/scriptIndex.js" defer></script>
-    <link rel="stylesheet" href="css/styleSobreProjeto.css" />
+    <script src="../js/scriptEmpresas.js" defer></script>
+    <link rel="stylesheet" href="../css/styleEmpresas.css" />
 </head>
 
 <body>
@@ -72,72 +72,37 @@
             </div>
         </div>
     </header>
-    <section class="sobre-projeto">
-        <div class="intro">
-            <h2>Bem-vindo ao AIB – Auxílio Imigrativo Brasileiro</h2>
-            <p>
-                O <strong>AIB</strong> é um projeto dedicado a oferecer suporte essencial a imigrantes que chegam ao
-                Brasil.
-                Com uma abordagem acolhedora e segura, nossa plataforma conecta você a recursos vitais para reconstruir
-                sua vida com dignidade, orientação e oportunidade.
-            </p>
+    <div class="container">
+        <div class="filtro-container">
+            <label for="filtroSelect" class="filtro-label">Filtrar por categoria:</label>
+            <select id="filtroSelect" class="filtro-select">
+                <option value="">Selecione uma categoria...</option>
+                <option value="Arquitetura e Urbanismo & Design">Arquitetura e Urbanismo & Design</option>
+                <option value="Ciências Agrárias & Meio Ambiente">Ciências Agrárias & Meio Ambiente</option>
+                <option value="Ciências Biológicas e da Saúde">Ciências Biológicas e da Saúde</option>
+                <option value="Ciências Humanas">Ciências Humanas</option>
+                <option value="Ciências Jurídicas">Ciências Jurídicas</option>
+                <option value="Ciências Médicas">Ciências Médicas</option>
+                <option value="Comunicação & Artes">Comunicação & Artes</option>
+                <option value="Engenharias">Engenharias</option>
+                <option value="Gestão & Negócios">Gestão & Negócios</option>
+                <option value="TI & Computação">TI & Computação</option>
+                <option value="Turismo & Hospitalidade">Turismo & Hospitalidade</option>
+                <option value="Sem graduação">Sem graduação</option>
+            </select>
+            <button id="btnFiltrar" class="btn-filtrar">Filtrar</button>
         </div>
 
-        <div class="card-container">
-            <div class="card">
-                <img src="https://cdn-icons-png.flaticon.com/512/633/633611.png" alt="Documentação" />
-                <h3>Legalização</h3>
-                <p>Receba orientação jurídica gratuita sobre documentação, CPF, vistos, regularização e direitos do
-                    imigrante.</p>
-            </div>
-
-            <div class="card">
-                <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="Emprego" />
-                <h3>Emprego</h3>
-                <p>Conectamos você com empresas que contratam imigrantes, com ou sem graduação. Prepare seu currículo
-                    conosco.</p>
-            </div>
-
-            <div class="card">
-                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135759.png" alt="Estudo" />
-                <h3>Estudo e Capacitação</h3>
-                <p>Acesso a bolsas, cursos gratuitos de português, informática, Photoshop, edição de vídeo e muito mais.
-                </p>
-            </div>
-
-            <div class="card">
-                <img src="https://cdn-icons-png.flaticon.com/512/387/387561.png" alt="Psicologia" />
-                <h3>Apoio Psicológico</h3>
-                <p>Atendimento voluntário com psicólogos parceiros, grupos de apoio e escuta ativa para cuidar da sua
-                    saúde mental.</p>
-            </div>
-
-            <div class="card">
-                <img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png" alt="Saúde" />
-                <h3>Saúde</h3>
-                <p>Encaminhamento para serviços públicos, vacinação, atendimento emergencial e clínicas universitárias.
-                </p>
-            </div>
+        <div id="listaEmpresas" class="lista-empresas">
+            <!-- Empresas aparecerão aqui -->
         </div>
 
-        <div class="seguranca">
-            <h3>🌐 Segurança e Privacidade</h3>
-            <p>
-                Seus dados estão protegidos. Utilizamos criptografia de ponta e seguimos as diretrizes da <strong>Lei
-                    Geral de Proteção de Dados (LGPD)</strong>.
-                Nenhuma informação será compartilhada sem sua autorização.
-            </p>
+        <div class="paginacao-container">
+            <button id="btnPaginaAnterior" class="btn-pagina" disabled>Anterior</button>
+            <span id="paginaAtual" class="pagina-atual">Página 1</span>
+            <button id="btnPaginaProxima" class="btn-pagina" disabled>Próxima</button>
         </div>
-
-        <div class="chamada-acao">
-            <h3>📌 Pronto para começar?</h3>
-            <p>
-                Cadastre-se gratuitamente e tenha acesso imediato aos recursos da plataforma AIB.
-            </p>
-            <a href="Register.html" class="botao">Quero me cadastrar</a>
-        </div>
-    </section>
-
+    </div>
 </body>
 
 </html>
