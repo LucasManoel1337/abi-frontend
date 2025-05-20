@@ -132,9 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function carregarEmpresas() {
         try {
-            let url = `http://localhost:8080/empresas/listar-empresas?qnt=${qntPorPagina}&pagina=${paginaAtual}`;
+            let url = `https://abi-backend-vtx4.onrender.com/empresas/listar-empresas?qnt=${qntPorPagina}&pagina=${paginaAtual}`;
             if (filtroAtual.trim() !== '') {
-                url = `http://localhost:8080/empresas/listar-empresas/filtro?qnt=${qntPorPagina}&pagina=${paginaAtual}&filtro=${encodeURIComponent(filtroAtual)}`;
+                url = `https://abi-backend-vtx4.onrender.com/empresas/listar-empresas/filtro?qnt=${qntPorPagina}&pagina=${paginaAtual}&filtro=${encodeURIComponent(filtroAtual)}`;
             }
 
             const response = await fetch(url);
