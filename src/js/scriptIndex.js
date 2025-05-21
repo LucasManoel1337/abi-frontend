@@ -1,4 +1,5 @@
 import { LOGIN } from "./urls.js";
+import { verificar } from './utilidades/verificarLogin.js'
 
 document.addEventListener('DOMContentLoaded', () => {
             // Seletores principais
@@ -13,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 btnLogin: document.getElementById('btnLogin'),
                 btnLogout: document.getElementById('btnLogout')
             };
+            
+            verificar();
 
             let currentTranslations = {};
 
@@ -92,6 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 selectors.btnLogin.style.display = 'block';
                 selectors.userDropdown.classList.remove('open');
                 selectors.userDropdown.setAttribute('aria-hidden', 'true');
+                // vai realmente deslogar o usuário
+                localStorage.removeItem('idUsuario');
+                // vai desativar os links
+                verificar();
                 alert('Você saiu da sessão!');
             });
 
