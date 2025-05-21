@@ -91,14 +91,15 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             selectors.btnLogout.addEventListener('click', () => {
-                selectors.btnLogout.style.display = 'none';
-                selectors.btnLogin.style.display = 'block';
-                selectors.userDropdown.classList.remove('open');
-                selectors.userDropdown.setAttribute('aria-hidden', 'true');
                 // vai realmente deslogar o usuário
                 localStorage.removeItem('idUsuario');
                 // vai desativar os links
                 verificar();
+
+                selectors.btnLogout.style.display = 'none';
+                selectors.btnLogin.style.display = 'block';
+                selectors.userDropdown.classList.remove('open');
+                selectors.userDropdown.setAttribute('aria-hidden', 'true');
                 alert('Você saiu da sessão!');
             });
 
