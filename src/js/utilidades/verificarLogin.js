@@ -1,12 +1,12 @@
-// pega o id do usuário no localstorage
-let user = localStorage.getItem('idUsuario');
-
-// pega os botões de logar / deslogar
-let botaoLogout = document.getElementById('btnLogout');
-let botaoLogin = document.getElementById('btnLogin');
-        
-
 export const verificar = () => {
+
+    // pega o id do usuário no localstorage
+    let user = localStorage.getItem('idUsuario');
+
+    // pega os botões de logar / deslogar
+    let botaoLogout = document.getElementById('btnLogout');
+    let botaoLogin = document.getElementById('btnLogin');
+
     // se o usuário estiver logado
     if (user) {
         // ativa o de deslogar e desativa o de logar
