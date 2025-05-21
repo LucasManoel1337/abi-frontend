@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Função para carregar JSON e aplicar tradução
   function applyTranslation(lang) {
-    fetch(`lang/${lang}.json`)
+    fetch(`https://abi-frontend-mu.vercel.app/src/lang/${lang}.json`)
       .then(res => {
         if (!res.ok) throw new Error('Erro ao carregar arquivo de idioma');
         return res.json();
