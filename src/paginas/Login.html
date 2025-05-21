@@ -5,6 +5,7 @@
   <title>AIB - Login</title>
   <link rel="stylesheet" href="../css/style.css" />
   <script src="../js/script.js" defer></script>
+  <script src="../js/traduzir.js"></script>
   <script src="../js/login.js" type="module"></script>
 </head>
 <body>
@@ -13,8 +14,8 @@
       <img src="../../assets/images/AIBicon.png" alt="Logo AIB" class="logo" />
       <h1>AIB – Auxílio Imigrativo Brasileiro</h1>
       <div class="lang-select">
-        <img id="flag" src="https://flagcdn.com/w40/br.png" alt="bandeira" />
-        <select id="language">
+        <img id="bandeira" src="https://flagcdn.com/w40/br.png" alt="bandeira" />
+        <select id="select-lingua">
           <option value="pt">Português</option>
           <option value="en">English</option>
           <option value="es">Español</option>
@@ -30,24 +31,24 @@
     </header>
 
     <main class="card">
-      <h2 data-i18n="loginTitle">Entrar</h2>
+      <h2 data-key="loginTitle">Entrar</h2>
       
       <!-- input email -->
-      <label for="email" data-i18n="email">E-mail</label>
-      <input type="email" id="inEmail" placeholder="email@exemplo.com" required data-i18n="email" />
+      <label for="email" data-key="email">E-mail</label>
+      <input type="email" id="inEmail" placeholder="email@exemplo.com" required data-key="email" />
       
       <!-- input senha -->
-      <label for="password" data-i18n="password">Senha</label>
+      <label for="password" data-key="password">Senha</label>
       <input type="password" id="inSenha" placeholder="••••••••" required />
       
       <!-- botão de logar -->
-      <button class="login-btn" data-i18n="loginBtn" id="btnLogin">Acessar</button>
+      <button class="login-btn" data-key="loginBtn" id="btnLogin">Acessar</button>
 
-      <p class="switch" data-i18n="noAccount">
+      <p class="switch" data-key="noAccount">
         não tem uma conta? <a href="Register.html">Entre aqui</a>
       </p>
 
-      <p class="voltar" data-i18n="voltar">
+      <p class="voltar" data-key="voltar">
         <a href="https://abi-frontend-mu.vercel.app/index.html">Voltar ao menu principal</a>
       </p>
 
