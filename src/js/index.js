@@ -1,4 +1,4 @@
-import { LOGIN } from "./urls.js";
+import { GUIA, INDEX, LOGIN, SOBRE } from "./urls.js";
 import { verificar } from './utilidades/verificarLogin.js'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,9 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     verificar();
-
-    let currentTranslations = {};
-
 
     // Fecha todos os dropdowns
     function closeDropdowns() {
@@ -49,6 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
         selectors.userDropdown.classList.remove('open');
         selectors.userDropdown.setAttribute('aria-hidden', 'true');
         alert('Você saiu da sessão!');
+
+        // se a pagina atual for diferente da pagina inical, guia ou sobre
+        if (window.location !== GUIA && window.location !== SOBRE && window.location !== INDEX) {
+            // manda para a pagina index
+            window.location.replace(INDEX);
+        }
     });
 
     // Suporte a teclado
