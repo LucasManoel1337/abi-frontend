@@ -4,7 +4,7 @@
   "password": "Password",
   "loginBtn": "Accedi",
   "noAccount": "Non hai un account? <a href='Register.html'>Registrati qui</a>",
-  "voltar": "<a href='Index.html'>Torna al menu principale</a>",
+  "voltar": "<a href='https://abi-frontend-mu.vercel.app/index.html'>Torna al menu principale</a>",
   "registerTitle": "Registrati",
   "confirmPassword": "Conferma password",
   "registerBtn": "Crea account",
