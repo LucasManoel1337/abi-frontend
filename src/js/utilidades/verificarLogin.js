@@ -1,6 +1,7 @@
-import { GUIA, SOBRE, INDEX } from "../urls.js";
+import { GUIA, SOBRE, INDEX, INSTI } from "../urls.js";
 
-const urlPermitidos = [GUIA, SOBRE, INDEX];
+// urls das paginas permitidas o usuário deslogado ficar
+const urlPermitidos = [GUIA, SOBRE, INDEX, INSTI];
 
 export const verificar = () => {
 
@@ -23,8 +24,8 @@ export const verificar = () => {
     if (urlPermitidos.includes(window.location.href)) {
         // se o usuário não estiver logado oculta alguns links
         let linksParaDesativar = document.querySelector('nav').children;
-        let num = 2;
-        for (let i = 2, n = linksParaDesativar.length; i < n; i++) {
+        let num = urlPermitidos.length - 1;
+        for (let i = num, n = linksParaDesativar.length; i < n; i++) {
             linksParaDesativar[num].remove();
         }    
     } else {
