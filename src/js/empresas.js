@@ -60,23 +60,71 @@ const desativarBotoes = (elsHtml, paginaAtual, qntPagina) => {
     elsHtml.btnAnterior.disabled = paginaAtual === 1;
 }
 
+const colocarFiltrosSelect = async (elsHtml) => {
+    try {
+        // produção
+        const resposta = fetch('https://abi-frontend-mu.vercel.app/src/json/filtroEmpresas.json');
+        // dev
+        // const resposta = await fetch('../json/filtroEmpresas.json');
+        
+        if (!resposta.ok) {
+            throw new Error(await resposta.json().message);
+        }
+
+        const json = await resposta.json();
+
+        
+        // faz um loop pelas categorias, categoria vai ser um array:
+        // ['chave', 'valor']
+        Object.entries(json.categorias).forEach(categoria => {
+            // cria um elemento option
+            const opt = document.createElement('option');
+            // coloca o valor dele como a chave
+            opt.setAttribute('value', `${categoria[0]}`);
+            // coloca o texto como o valor
+            opt.textContent = `${categoria[1]}`;
+
+            elsHtml.selCategoria.appendChild(opt);
+        })
+
+        // mesmo loop acima só que para os estados
+        Object.entries(json.estados).forEach(estado => {
+            // cria um elemento option
+            const opt = document.createElement('option');
+            // coloca o valor dele como a chave
+            opt.setAttribute('value', `${estado[0]}`);
+            // coloca o texto como o valor
+            opt.textContent = `${estado[1]}`;
+
+            elsHtml.selEstado.appendChild(opt);
+        })
+
+    } catch(err) {
+        console.log('erro ao carregar filtros do json:', err);
+    }
+}
+ 
 // função que vai rodar quando pagina carregar
 document.addEventListener('DOMContentLoaded', async () => {    
-    let paginaAtual = 1;
-    let qntPagina   = 10;
-    let filtro = '';
-
     // elementos html que vamos usar
     const elsHtml = {
         listaEmpresas : document.getElementById('listaEmpresas'),
-        filtroSelect  : document.getElementById('filtroSelect'),
+        selCategoria  : document.getElementById('selCategoria'),
+        selEstado  : document.getElementById('selEstado'),
         btnFiltrar    : document.getElementById('btnFiltrar'),
         btnProxima    : document.getElementById('btnPaginaProxima'),
         btnAnterior   : document.getElementById('btnPaginaAnterior'),
         spanAtual     : document.getElementById('paginaAtual')
     };
 
+    
+    let paginaAtual = 1;
+    let qntPagina   = 10;
+    
     carregar(true);
+    // vai colocar os filtros nos selects
+    await colocarFiltrosSelect(elsHtml);
+    
     try {
         // pega a primeira página de empresas
         aplicarDados(await carregarEmpresas(), elsHtml, paginaAtual);
@@ -86,7 +134,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         elsHtml.innerHTML = '<p>Erro na comunicação com o servidor.</p>'
     }
     carregar(false);    
-
+    
+    // filtros
+    let categoria = '';
+    let estado    = '';
 
     // clicando no botão proxima
     elsHtml.btnProxima.addEventListener('click', async () => {
@@ -94,14 +145,26 @@ document.addEventListener('DOMContentLoaded', async () => {
         paginaAtual++;
 
         carregar(true);
-        // se um filtro estiver aplicado
-        if (filtro !== '') {
-            // pesquisa proxima página com filtro
-            aplicarDados(await carregarEmpresas({paginaAtual : paginaAtual, filtro : filtro}), elsHtml, paginaAtual);
-        } else {
-            // pesquisa proxima página sem filtro
-            aplicarDados(await carregarEmpresas({paginaAtual : paginaAtual}), elsHtml, paginaAtual);
+
+        // faz um objeto de configuração
+        let configRequisicao = {
+            paginaAtual : paginaAtual
+        };
+
+        // se tem o filtro de categoria
+        if (categoria !== '') {
+            // adiciona categoria a configuração
+            configRequisicao['categoria'] = categoria;
         }
+
+        // se tem estado
+        if (estado !== '') {
+            // adiciona estado a configuração
+            configRequisicao['estado'] = estado;
+        }
+
+        aplicarDados(await carregarEmpresas(configRequisicao), elsHtml, paginaAtual);
+
         carregar(false);
 
         // analisa e desativa botões
@@ -116,14 +179,26 @@ document.addEventListener('DOMContentLoaded', async () => {
         paginaAtual--;
 
         carregar(true);
-        // se um filtro estiver aplicado
-        if (filtro !== '') {
-            // pesquisa pagina anterior com filtro
-            aplicarDados(await carregarEmpresas({paginaAtual : paginaAtual, filtro : filtro}), elsHtml, paginaAtual);
-        } else {
-            // pesquisa pagina anterior sem filtro
-            aplicarDados(await carregarEmpresas({paginaAtual : paginaAtual}), elsHtml, paginaAtual);
+       
+        // faz um objeto de configuração
+        let configRequisicao = {
+            paginaAtual : paginaAtual
+        };
+
+        // se tem o filtro de categoria
+        if (categoria !== '') {
+            // adiciona categoria a configuração
+            configRequisicao['categoria'] = categoria;
         }
+
+        // se tem estado
+        if (estado !== '') {
+            // adiciona estado a configuração
+            configRequisicao['estado'] = estado;
+        }
+
+        aplicarDados(await carregarEmpresas(configRequisicao), elsHtml, paginaAtual);
+
         // analisa e desativa botões
         desativarBotoes(elsHtml, paginaAtual, qntPagina);    
         // manda para o topo da página
@@ -135,19 +210,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     elsHtml.btnFiltrar.addEventListener('click', async () => {
         carregar(true);
-        // se o usuário apertou o filtrar sem um filtro selecionado e tinha usado um filtro antes
-        if (elsHtml.filtroSelect.value === '' && filtro !== '') {
-            // tira o filtro
-            filtro = '';
-            // pega os dados sem filtro
-            aplicarDados(await carregarEmpresas(), elsHtml, paginaAtual);
-        } else if (elsHtml.filtroSelect.value !== ''){
-            paginaAtual = 1;
-            // guarda o filtro selecionado
-            filtro = elsHtml.filtroSelect.value;
-            // pega os dados com filtro
-            aplicarDados(await carregarEmpresas({ filtro : filtro }), elsHtml, paginaAtual);   
+        paginaAtual = 1;
+        categoria = elsHtml.selCategoria.value;
+        estado = elsHtml.selEstado.value;
+
+        // coloca os filtros 
+        let requisicaoConfig = {
+            paginaAtual : paginaAtual,
+            categoria   : categoria,
+            estado      : estado,
         }
+        
+        aplicarDados(await carregarEmpresas(requisicaoConfig), elsHtml, paginaAtual);   
+
         // analisa e desativa botões
         desativarBotoes(elsHtml, paginaAtual, qntPagina);   
         carregar(false);

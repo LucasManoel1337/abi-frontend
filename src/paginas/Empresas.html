@@ -94,24 +94,31 @@
         </div>
     </header>
     <div class="container">
-        <div class="filtro-container">
-            <label for="filtroSelect" class="filtro-label">Filtrar por categoria:</label>
-            <select id="filtroSelect" class="filtro-select">
-                <option value="">Selecione uma categoria...</option>
-                <option value="Arquitetura e Urbanismo & Design">Arquitetura e Urbanismo & Design</option>
-                <option value="Ciências Agrárias & Meio Ambiente">Ciências Agrárias & Meio Ambiente</option>
-                <option value="Ciências Biológicas e da Saúde">Ciências Biológicas e da Saúde</option>
-                <option value="Ciências Humanas">Ciências Humanas</option>
-                <option value="Ciências Jurídicas">Ciências Jurídicas</option>
-                <option value="Ciências Médicas">Ciências Médicas</option>
-                <option value="Comunicação & Artes">Comunicação & Artes</option>
-                <option value="Engenharias">Engenharias</option>
-                <option value="Gestão & Negócios">Gestão & Negócios</option>
-                <option value="TI & Computação">TI & Computação</option>
-                <option value="Turismo & Hospitalidade">Turismo & Hospitalidade</option>
-                <option value="Sem graduação">Sem graduação</option>
-            </select>
-            <button id="btnFiltrar" class="btn-filtrar">Filtrar</button>
+        <div class="d-flex align-items-center justify-content-center px-1 flex-column">
+            <div class="row row-cols-1 row-cols-md-2 g-3">
+                
+                <!-- Categoria -->
+                <div class="col-12 col-md-3">
+                    <label for="selCategoria" class="col-form-label">Filtrar por categoria:</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <select id="selCategoria" class="form-select">
+                        <option value="">Selecione uma categoria...</option>
+                    </select>
+                </div>
+
+                <!-- Estado -->
+                <div class="col-12 col-md-3">
+                    <label for="selEstado" class="col-form-label">Filtrar por estado:</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <select id="selEstado" class="form-select">
+                        <option value="">Selecione um estado...</option>
+                    </select>
+                </div>
+
+            </div>
+            <button id="btnFiltrar" class="btn-filtrar my-2">Filtrar</button>
         </div>
 
         <div id="listaEmpresas" class="lista-empresas">
@@ -132,3 +139,11 @@
 </body>
 
 </html>
+
+<style scoped>
+
+.col-form-label {
+    width: 150px;
+}
+
+</style>

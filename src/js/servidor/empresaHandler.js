@@ -1,20 +1,39 @@
 import { URL, EMPRESA, LISTAREM } from "./constantes.js"
 
-export const carregarEmpresas = async ({qtdPagina = 10, paginaAtual = 1, filtro = ''} = {}) => {
-    try {
-        let url; 
+const contruirUrl = (qtdPagina, paginaAtual, categoria, estado) => {
+    let url;
 
-        // caso tenha um filtro definido
-        if (filtro.trim() !== '') {
-            // faz uma url com o filtro aplicado
-            url = `${URL}/${EMPRESA}/${LISTAREM}/filtro?qnt=${qtdPagina}&pagina=${paginaAtual}&filtro=${encodeURIComponent(filtro)}`;
-        } else {
-            // faz uma url sem filtro
-            url = `${URL}/${EMPRESA}/${LISTAREM}?qnt=${qtdPagina}&pagina=${paginaAtual}`;
+    // se tem algum filtro
+    if (categoria.trim() !== '' || estado.trim() !== '') {
+        // url aponta para listar-empresas/filtro
+        url = `${URL}/${EMPRESA}/${LISTAREM}/filtro?qnt=${qtdPagina}&pagina=${paginaAtual}`;
+
+        // se tem categoria
+        if (categoria.trim() !== '') {
+            // adiciona categoria como parametro
+            url += `&categoria=${categoria}`;
         }
 
+        // se tem estado
+        if (estado.trim() !== '') {
+            // adiciona estado como parametro
+            url += `&estado=${encodeURIComponent(estado)}`;
+        }
+    // se não tem filtro
+    } else {
+        // faz uma url sem filtro
+        url = `${URL}/${EMPRESA}/${LISTAREM}?qnt=${qtdPagina}&pagina=${paginaAtual}`;
+    }
+
+    return url;
+}
+
+export const carregarEmpresas = async ({ qtdPagina = 10, paginaAtual = 1, categoria = '', estado = '' } = {}) => {
+    try {
+        const url = contruirUrl(qtdPagina, paginaAtual, categoria, estado);
+
         // faz a requisição com o servidor
-        const resposta = await fetch(url, { method : 'GET' });
+        const resposta = await fetch(url, { method: 'GET' });
 
         // se a resposta não estiver ok
         if (!resposta.ok) {
