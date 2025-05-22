@@ -2,7 +2,7 @@
  * Autor     : Kayo Victor
  * Descrição : Vai impossibilitar interação com a pagina atual, e colocar um icone de carregamento. Quando o servidor retornar uma resposta vai desaparecer
  */
-import { CSSCARREGAR } from "../urls";
+import { CSSCARREGAR } from "../urls.js";
 /**
  * 
  * @param {Boolean} iniciar 
