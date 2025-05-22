@@ -1,4 +1,4 @@
-import { GUIA, SOBRE, INDEX } from "../urls";
+import { GUIA, SOBRE, INDEX } from "../urls.js";
 
 const urlPermitidos = [GUIA, SOBRE, INDEX];
 

@@ -2,6 +2,8 @@ import { GUIA, INDEX, LOGIN, SOBRE } from "./urls.js";
 import { verificar } from './utilidades/verificarLogin.js'
 
 document.addEventListener('DOMContentLoaded', () => {
+    verificar();
+    
     // Seletores principais
     const selectors = {
         navLinks: document.querySelectorAll('nav a'),
@@ -11,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btnLogout: document.getElementById('btnLogout')
     };
 
-    verificar();
 
     // Fecha todos os dropdowns
     function closeDropdowns() {
