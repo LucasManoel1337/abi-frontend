@@ -27,8 +27,9 @@ export const verificar = () => {
         for (let i = 2, n = linksParaDesativar.length; i < n; i++) {
             linksParaDesativar[num].remove();
         }    
-    } else {
-        window.location.replace(INDEX);
     }
+
+    console.log(window.location);
+    console.log(urlPermitidos);
     
 }
