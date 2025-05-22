@@ -20,16 +20,15 @@ export const verificar = () => {
     }
     
     // se o usuário estiver em uma pagina permitida
-    if (urlPermitidos.includes(window.location)) {
+    if (urlPermitidos.includes(window.location.href)) {
         // se o usuário não estiver logado oculta alguns links
         let linksParaDesativar = document.querySelector('nav').children;
         let num = 2;
         for (let i = 2, n = linksParaDesativar.length; i < n; i++) {
             linksParaDesativar[num].remove();
         }    
+    } else {
+        window.location.replace(INDEX);
     }
-
-    console.log(window.location);
-    console.log(urlPermitidos);
     
 }
