@@ -128,6 +128,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // pega os dados sem filtro
             aplicarDados(await carregarEmpresas(), elsHtml, paginaAtual);
         } else {
+            paginaAtual = 1;
             // guarda o filtro selecionado
             filtro = elsHtml.filtroSelect.value;
             // pega os dados com filtro
