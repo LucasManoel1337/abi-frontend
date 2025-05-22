@@ -1,4 +1,5 @@
 import { cadastrarNovoUsuario } from './servidor/userHandler.js'
+import { carregar } from './utilidades/carregando.js'
 import { LOGIN } from './urls.js';
 
 // pega os elementos html que vamos usar
@@ -44,10 +45,14 @@ botaoCadastrar.addEventListener('click', async () => {
     
     // valida se os inputs estão validos
     if (validarInput()) {
+        carregar(true);
         let respostaServer = await cadastrarNovoUsuario(inputEmail.value, inputSenha.value);
 
         if (respostaServer.ok) {
             window.location.replace(LOGIN);
+        } else {
+            carregar(false);
+            alert('Erro na tentativa de criar conta, tente novamente');
         }
     }
 });

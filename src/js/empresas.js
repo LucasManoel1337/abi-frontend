@@ -1,4 +1,5 @@
 import { carregarEmpresas } from "./servidor/empresaHandler.js";
+import { carregar } from './utilidades/carregando.js'
 
 /**
  * Vai pegar as empresas que foram pegas no banco e colocar no html
@@ -73,17 +74,24 @@ document.addEventListener('DOMContentLoaded', async () => {
         spanAtual     : document.getElementById('paginaAtual')
     };
 
-    // pega a primeira página de empresas
-    aplicarDados(await carregarEmpresas(), elsHtml, paginaAtual);
-    // analisa e desativa botões
-    desativarBotoes(elsHtml, paginaAtual, qntPagina);    
-        
+    carregar(true);
+    try {
+        // pega a primeira página de empresas
+        aplicarDados(await carregarEmpresas(), elsHtml, paginaAtual);
+        // analisa e desativa botões
+        desativarBotoes(elsHtml, paginaAtual, qntPagina);    
+    } catch(err) {
+        elsHtml.innerHTML = '<p>Erro na comunicação com o servidor.</p>'
+    }
+    carregar(false);    
+
 
     // clicando no botão proxima
     elsHtml.btnProxima.addEventListener('click', async () => {
         // aumenta número da página
         paginaAtual++;
 
+        carregar(true);
         // se um filtro estiver aplicado
         if (filtro !== '') {
             // pesquisa proxima página com filtro
@@ -92,6 +100,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // pesquisa proxima página sem filtro
             aplicarDados(await carregarEmpresas({paginaAtual : paginaAtual}), elsHtml, paginaAtual);
         }
+        carregar(false);
 
         // analisa e desativa botões
         desativarBotoes(elsHtml, paginaAtual, qntPagina);    
@@ -104,6 +113,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // dimiui número da página
         paginaAtual--;
 
+        carregar(true);
         // se um filtro estiver aplicado
         if (filtro !== '') {
             // pesquisa pagina anterior com filtro
@@ -112,22 +122,24 @@ document.addEventListener('DOMContentLoaded', async () => {
             // pesquisa pagina anterior sem filtro
             aplicarDados(await carregarEmpresas({paginaAtual : paginaAtual}), elsHtml, paginaAtual);
         }
-
         // analisa e desativa botões
         desativarBotoes(elsHtml, paginaAtual, qntPagina);    
         // manda para o topo da página
         scroll(0,0);
+        
+        carregar(false);
     });
     
 
     elsHtml.btnFiltrar.addEventListener('click', async () => {
+        carregar(true);
         // se o usuário apertou o filtrar sem um filtro selecionado e tinha usado um filtro antes
         if (elsHtml.filtroSelect.value === '' && filtro !== '') {
             // tira o filtro
             filtro = '';
             // pega os dados sem filtro
             aplicarDados(await carregarEmpresas(), elsHtml, paginaAtual);
-        } else {
+        } else if (elsHtml.filtroSelect.value !== ''){
             paginaAtual = 1;
             // guarda o filtro selecionado
             filtro = elsHtml.filtroSelect.value;
@@ -136,5 +148,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         // analisa e desativa botões
         desativarBotoes(elsHtml, paginaAtual, qntPagina);   
+        carregar(false);
     })
 })

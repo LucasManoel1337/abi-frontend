@@ -9,4 +9,7 @@ export const INDEX = 'https://abi-frontend-mu.vercel.app/index.html'
 
 // css
 
+// produção
 export const CSSCARREGAR = 'https://abi-frontend-mu.vercel.app/src/css/carregando.css'
+// dev
+// export const CSSCARREGAR = '../css/carregando.css'

@@ -1,7 +1,9 @@
 #div-carregamento {
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
+    top: 0px;
+    right: 0px;
     display: flex;
     flex-direction: column;
     color: white;
