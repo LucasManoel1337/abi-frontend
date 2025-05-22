@@ -35,6 +35,8 @@ const aplicarDados = (empresas, elsHtml, paginaAtual) => {
             <p><strong>Categoria:</strong> ${empresa.categoria}</p>
             <p><strong>Descrição empresa:</strong> ${empresa.descricao}</p>
             <p><strong>Função:</strong> ${empresa.funcao}</p>
+            <p><strong>Estado:</strong> ${empresa.estado}</p>
+            <p><strong>Muniípio:</strong> ${empresa.municipio}</p>
             <button class="btn-mais-info" onclick="maisInformacoes('${empresa.id}')">Mais informações</button>
         `;
         // coloca a div na lista de empresas
