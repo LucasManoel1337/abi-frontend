@@ -28,8 +28,7 @@ const aplicarDadosBolsas = (bolsas, elsHtml, paginaAtual) => {
     bolsas.forEach(bolsa => {
         // cria uma div
         const div = document.createElement('div');
-        // adiciona a classe bolsa-item (CSS precisará ser criado/ajustado)
-        div.classList.add('bolsa-item'); // Nome da classe alterado
+        div.classList.add('item-card');
         // define o html da div (ajustar campos conforme a estrutura de dados de 'bolsa')
         div.innerHTML = `
             <div class="d-flex justify-content-between"> 

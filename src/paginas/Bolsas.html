@@ -5,11 +5,11 @@
     <meta charset="UTF-8" />
     <title>ABI - Bolsas</title>
     <script type="module" src="../js/index.js" defer></script>
-    <script type="module" src="../js/bolsas.js" defer></script> 
+    <script type="module" src="../js/bolsas.js" defer></script>
     <script src="../js/traduzir.js"></script>
     <script type="module" src="../js/componentes/AppHeader.js"></script>
-    <link rel="stylesheet" href="../css/styleIndex.css" /> 
-    <link rel="stylesheet" href="../css/bolsas.css">
+    <link rel="stylesheet" href="../css/styleIndex.css" />
+    <link rel="stylesheet" href="../css/listasComFiltros.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossorigin="anonymous">
@@ -19,29 +19,26 @@
 
     <app-header></app-header>
     <main class="container mt-4 mb-2">
-        <div class="container-filtros-bolsas">
-            <h2 class="text-center mb-4" style="color: #005b96;">Encontre Bolsas de Estudo</h2>
+        <div class="container-filtros"> <h2 class="text-center mb-4" style="color: #005b96;">Encontre Bolsas de Estudo</h2>
             <div class="filtros-grid">
                 <label for="selCategoriaBolsa" class="form-label">Filtrar por categoria:</label>
                 <select id="selCategoriaBolsa" class="form-select">
                     <option value="">Selecione uma categoria...</option>
-                    </select>
+                </select>
 
                 <label for="selEstadoBolsa" class="form-label">Filtrar por estado:</label>
                 <select id="selEstadoBolsa" class="form-select">
                     <option value="">Selecione um estado...</option>
-                    </select>
+                </select>
 
                 <label for="selModeloCurso" class="form-label">Modelo de curso:</label>
                 <select id="selModeloCurso" class="form-select">
                     <option value="">Selecione um modelo...</option>
-                    </select>
+                </select>
             </div>
-            <button id="btnFiltrarBolsas" class="btn-filtrar-bolsas">Filtrar Bolsas</button>
-        </div>
+            <button id="btnFiltrarBolsas" class="btn-filtrar-listas">Filtrar Bolsas</button> </div>
 
-        <div id="listaBolsas" class="lista-bolsas mt-4">
-            </div>
+        <div id="listaBolsas" class="lista-itens mt-4"> </div>
 
         <div class="paginacao-container">
             <button id="btnPaginaAnteriorBolsas" class="btn-pagina" disabled>Anterior</button>

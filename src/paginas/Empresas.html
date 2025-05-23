@@ -8,66 +8,46 @@
     <script type="module" src="../js/empresas.js"></script>
     <script src="../js/traduzir.js"></script>
     <script type="module" src="../js/componentes/AppHeader.js"></script>
-    <link rel="stylesheet" href="../css/styleEmpresas.css" />
-    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../css/listasComFiltros.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/styleIndex.css" />
 </head>
 
 <body>
 
     <app-header></app-header>
-    <div class="container">
-        <div class="d-flex align-items-center justify-content-center px-1 flex-column">
-            <div class="row row-cols-1 row-cols-md-2 g-3">
-                
-                <!-- Categoria -->
-                <div class="col-12 col-md-3">
-                    <label for="selCategoria" class="col-form-label">Filtrar por categoria:</label>
-                </div>
-                <div class="col-12 col-md-9">
-                    <select id="selCategoria" class="form-select">
-                        <option value="">Selecione uma categoria...</option>
-                    </select>
-                </div>
 
-                <!-- Estado -->
-                <div class="col-12 col-md-3">
-                    <label for="selEstado" class="col-form-label">Filtrar por estado:</label>
-                </div>
-                <div class="col-12 col-md-9">
-                    <select id="selEstado" class="form-select">
-                        <option value="">Selecione um estado...</option>
-                    </select>
-                </div>
+    <main class="container mt-4 mb-2">
+        <div class="container-filtros">
+            <h2 class="text-center mb-4" style="color: #005b96;">Encontre Empresas Parceiras</h2>
+            <div class="filtros-grid">
+                <label for="selCategoria" class="form-label">Filtrar por categoria:</label>
+                <select id="selCategoria" class="form-select">
+                    <option value="">Selecione uma categoria...</option>
+                </select>
 
+                <label for="selEstado" class="form-label">Filtrar por estado:</label>
+                <select id="selEstado" class="form-select">
+                    <option value="">Selecione um estado...</option>
+                </select>
             </div>
-            <button id="btnFiltrar" class="btn-filtrar my-2">Filtrar</button>
+            <button id="btnFiltrar" class="btn-filtrar-listas">Filtrar</button>
         </div>
 
-        <div id="listaEmpresas" class="lista-empresas">
-            <!-- Empresas aparecerão aqui -->
-        </div>
+        <div id="listaEmpresas" class="lista-itens mt-4">
+            </div>
 
         <div class="paginacao-container">
             <button id="btnPaginaAnterior" class="btn-pagina" disabled>Anterior</button>
             <span id="paginaAtual" class="pagina-atual">Página 1</span>
             <button id="btnPaginaProxima" class="btn-pagina" disabled>Próxima</button>
         </div>
-    </div>
+    </main>
 
-    <!-- Bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
 </body>
 
 </html>
-
-<style scoped>
-
-.col-form-label {
-    width: 150px;
-}
-
-</style>

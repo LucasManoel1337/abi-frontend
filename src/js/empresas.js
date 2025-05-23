@@ -28,7 +28,7 @@ const aplicarDados = (empresas, elsHtml, paginaAtual) => {
         // cria uma div
         const div = document.createElement('div');
         // adiciona a classe empresa-item
-        div.classList.add('empresa-item');
+        div.classList.add('item-card');
         // define o html da div
         div.innerHTML = `
             <h3>${empresa.nome}</h3>

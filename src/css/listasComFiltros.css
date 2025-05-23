@@ -1,0 +1,207 @@
+/* General body padding for fixed header should be in a more global CSS like styleIndex.css */
+/* e.g., body { padding-top: 70px; background: #f5f7fa; color: #333; } */
+
+/* Container for filters */
+.container-filtros {
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Grid layout for filter elements */
+.filtros-grid {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Label and select/input */
+    gap: 15px 10px; /* Espaçamento entre linhas e colunas */
+    align-items: center; /* Alinha verticalmente label e select */
+    margin-bottom: 20px;
+}
+
+.filtros-grid label {
+    font-weight: 600;
+    color: #333;
+    text-align: right; /* Alinha labels à direita */
+}
+
+.filtros-grid select.form-select,
+.filtros-grid input.form-control { /* Added for general input styling if needed */
+    border: 1px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.filtros-grid select.form-select:focus,
+.filtros-grid input.form-control:focus {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Filter button */
+.btn-filtrar-listas {
+    padding: 10px 25px;
+    background-color: #007BFF; /* Azul padrão Bootstrap */
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+    display: block; /* Para centralizar com margin: auto */
+    margin: 0 auto; /* Centraliza o botão */
+}
+
+.btn-filtrar-listas:hover:not(:disabled) {
+    background-color: #0056b3; /* Azul mais escuro */
+}
+
+.btn-filtrar-listas:disabled {
+    background-color: #a6c8ff;
+    cursor: not-allowed;
+}
+
+/* Container for the list of items (empresas or bolsas) */
+.lista-itens {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 200px; /* Para evitar colapso visual enquanto carrega */
+    margin-bottom: 30px;
+}
+
+/* Individual item card */
+.item-card {
+    padding: 20px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-color: #ffffff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative; /* Para o botão "Mais informações" */
+    padding-bottom: 60px; /* Espaço para o botão, ajustar se necessário */
+}
+
+.item-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.item-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.3rem;
+    color: #005b96; /* Azul escuro para títulos */
+}
+
+.item-card p {
+    margin: 5px 0;
+    color: #444;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.item-card p strong {
+    color: #333;
+}
+
+/* "More Info" button inside item cards */
+.btn-mais-info {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: #d4af37; /* dourado */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(212, 175, 55, 0.6);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-mais-info:hover {
+    background-color: #b5891d; /* dourado mais escuro no hover */
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.8);
+}
+
+/* Pagination styles */
+.paginacao-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Reduzido o gap */
+    margin-top: 30px;
+    padding-bottom: 40px;
+}
+
+.btn-pagina {
+    padding: 8px 20px; /* Ajustado padding */
+    font-weight: 600;
+    font-size: 0.95rem; /* Ajustado tamanho da fonte */
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 6px; /* Ajustado border-radius */
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.4);
+    transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-pagina:disabled {
+    background-color: #a6c8ff;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.btn-pagina:hover:not(:disabled) {
+    background-color: #0056b3;
+    box-shadow: 0 3px 7px rgba(0, 91, 179, 0.5);
+}
+
+.pagina-atual {
+    font-weight: 700;
+    font-size: 1.05rem; /* Ajustado tamanho da fonte */
+    color: #333;
+    user-select: none;
+    padding: 0 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .filtros-grid {
+        grid-template-columns: 1fr; /* Labels acima dos selects em telas menores */
+    }
+
+    .filtros-grid label {
+        text-align: left; /* Alinha labels à esquerda em telas menores */
+        margin-bottom: 2px;
+    }
+
+    .container-filtros {
+        margin: 20px 15px;
+        padding: 15px;
+    }
+
+    .item-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .item-card p {
+        font-size: 0.9rem;
+    }
+
+    .btn-mais-info {
+        padding: 7px 14px;
+        font-size: 0.85rem;
+    }
+
+    .paginacao-container {
+        gap: 10px;
+    }
+
+    .btn-pagina {
+        padding: 7px 15px;
+        font-size: 0.9rem;
+    }
+}
