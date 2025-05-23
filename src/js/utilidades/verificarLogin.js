@@ -23,7 +23,7 @@ export const verificar = () => {
     // se o usuário estiver em uma pagina permitida
     if (urlPermitidos.includes(window.location.href)) {
         // se o usuário não estiver logado oculta alguns links
-        let linksParaDesativar = document.querySelector('nav').children;
+        let linksParaDesativar = document.querySelector('#appHeaderNavLinksContainer').children;
         let num = urlPermitidos.length - 1;
         for (let i = num, n = linksParaDesativar.length; i < n; i++) {
             linksParaDesativar[num].remove();
