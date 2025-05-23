@@ -33,8 +33,7 @@
         "modelosDeCurso" : {
             "ead" : "EaD (Ensino a Distância)",
             "hibrido" : "Híbrido",
-            "presencial" : "Presencial",
-            "semipresencial" : "Semipresencial"
+            "presencial" : "Presencial"
         }
     },
     "estados" : {
