@@ -1,14 +1,225 @@
 <!DOCTYPE html>
 <html lang="pt">
-    
+
 <head>
     <meta charset="UTF-8" />
     <title>ABI - Bolsas</title>
-    <script src="../js/index.js" type="module" defer></script>
+    <script type="module" src="../js/index.js" defer></script>
+    <script type="module" src="../js/bolsas.js" defer></script> 
     <script src="../js/traduzir.js"></script>
-    <link rel="stylesheet" href="../css/styleIndex.css" />
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/styleIndex.css" /> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous">
+    
+    <style>
+        /* Estilos básicos para a página de Bolsas, similares aos de Empresas */
+        body {
+            background: #f5f7fa;
+            color: #333;
+            padding-top: 70px; /* Ajuste para header fixo se necessário */
+        }
+
+        header {
+            /* Os estilos do header são de styleIndex.css */
+            /* Removido display: flex e outros para herdar de styleIndex.css */
+            position: fixed; /* Mantém o header fixo no topo */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1030; /* Padrão Bootstrap para navbars fixas */
+        }
+
+        .container-filtros-bolsas {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .filtros-grid {
+            display: grid;
+            grid-template-columns: auto 1fr; /* Label e select */
+            gap: 15px 10px; /* Espaçamento entre linhas e colunas */
+            align-items: center; /* Alinha verticalmente label e select */
+            margin-bottom: 20px;
+        }
+
+        .filtros-grid label {
+            font-weight: 600;
+            color: #333;
+            text-align: right; /* Alinha labels à direita */
+        }
+
+        .filtros-grid select.form-select {
+            border: 1px solid #ced4da;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        .filtros-grid select.form-select:focus {
+            border-color: #86b7fe;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+
+        .btn-filtrar-bolsas {
+            padding: 10px 25px;
+            background-color: #007BFF; /* Azul padrão Bootstrap */
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.25s ease;
+            display: block; /* Para centralizar com margin: auto */
+            margin: 0 auto; /* Centraliza o botão */
+        }
+
+        .btn-filtrar-bolsas:hover:not(:disabled) {
+            background-color: #0056b3; /* Azul mais escuro */
+        }
+        .btn-filtrar-bolsas:disabled {
+             background-color: #a6c8ff;
+             cursor: not-allowed;
+        }
+
+
+        .lista-bolsas {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-height: 200px; /* Para evitar colapso visual enquanto carrega */
+            margin-bottom: 30px;
+        }
+
+        .bolsa-item { /* Nome da classe alterado de .empresa-item */
+            padding: 20px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            background-color: #ffffff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative; /* Para o botão "Mais informações" */
+            padding-bottom: 60px; /* Espaço para o botão */
+        }
+
+        .bolsa-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .bolsa-item h3 {
+            margin: 0 0 10px;
+            font-size: 1.3rem;
+            color: #005b96; /* Azul escuro para títulos */
+        }
+
+        .bolsa-item p {
+            margin: 5px 0;
+            color: #444;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+        .bolsa-item p strong {
+            color: #333;
+        }
+
+
+        .btn-mais-info { /* Reutilizando estilo de .btn-mais-info de styleEmpresas.css */
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background-color: #d4af37; /* dourado */
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(212, 175, 55, 0.6);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-mais-info:hover {
+            background-color: #b5891d; /* dourado mais escuro no hover */
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.8);
+        }
+
+
+        .paginacao-container { /* Reutilizando estilo de .paginacao-container de styleEmpresas.css */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px; /* Reduzido o gap */
+            margin-top: 30px;
+            padding-bottom: 40px;
+        }
+
+        .btn-pagina { /* Reutilizando estilo de .btn-pagina de styleEmpresas.css */
+            padding: 8px 20px; /* Ajustado padding */
+            font-weight: 600;
+            font-size: 0.95rem; /* Ajustado tamanho da fonte */
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 6px; /* Ajustado border-radius */
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.4);
+            transition: background-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .btn-pagina:disabled {
+            background-color: #a6c8ff;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn-pagina:hover:not(:disabled) {
+            background-color: #0056b3;
+            box-shadow: 0 3px 7px rgba(0, 91, 179, 0.5);
+        }
+
+        .pagina-atual { /* Reutilizando estilo de .pagina-atual de styleEmpresas.css */
+            font-weight: 700;
+            font-size: 1.05rem; /* Ajustado tamanho da fonte */
+            color: #333;
+            user-select: none;
+            padding: 0 10px;
+        }
+
+        @media (max-width: 768px) {
+            .filtros-grid {
+                grid-template-columns: 1fr; /* Labels acima dos selects em telas menores */
+            }
+            .filtros-grid label {
+                text-align: left; /* Alinha labels à esquerda em telas menores */
+                margin-bottom: 2px;
+            }
+            .container-filtros-bolsas {
+                margin: 20px 15px;
+                padding: 15px;
+            }
+            .bolsa-item h3 {
+                font-size: 1.2rem;
+            }
+             .bolsa-item p {
+                font-size: 0.9rem;
+            }
+            .btn-mais-info {
+                padding: 7px 14px;
+                font-size: 0.85rem;
+            }
+            .paginacao-container {
+                gap: 10px;
+            }
+            .btn-pagina {
+                padding: 7px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -20,84 +231,78 @@
         </div>
 
         <nav role="navigation" aria-label="Menu principal">
-            <a href="SobreProjeto.html" data-key="sobre">Sobre o projeto</a>
-            <a href="Guia.html" data-key="guia">Guia</a>
+            <a href="./SobreProjeto.html" data-key="sobre">Sobre o projeto</a>
+            <a href="./Guia.html" data-key="guia">Guia</a>
             <a href="./Instituicoes.html" data-key="instituicoes">Instituições</a>
-            <a href="Empresas.html" data-key="empresas">Empresas</a>
-            <a href="Bolsas.html" data-key="bolsas">Bolsas</a>
-            <a href="Psicologia.html" data-key="psicologia">Psicologia</a>
-            <a href="Saude.html" data-key="saude">Saúde</a>
+            <a href="./Empresas.html" data-key="empresas">Empresas</a>
+            <a href="./Bolsas.html" data-key="bolsas">Bolsas</a> <a href="./Psicologia.html" data-key="psicologia">Psicologia</a>
+            <a href="./Saude.html" data-key="saude">Saúde</a>
         </nav>
 
         <div class="d-flex align-items-center gap-2">
-            <img src="" alt="" id="bandeira">
-            <select class='form-select' name="" id="select-lingua">
+            <img src="" alt="Bandeira do idioma selecionado" id="bandeira">
+            <select class='form-select form-select-sm' name="select-lingua" id="select-lingua" aria-label="Selecionar idioma">
                 <option value="pt">Português</option>
                 <option value="en">English</option>
                 <option value="es">Español</option>
                 <option value="fr">Français</option>
                 <option value="ar">العربية</option>
-                <option value="de">Alemão</option>
+                <option value="de">Deutsch</option>
                 <option value="it">Italiano</option>
-                <option value="ru">Russo</option>
-                <option value="zh">Chinês Simplificado</option>
-                <option value="ja">Japonês</option>
+                <option value="ru">Русский</option> 
+                <option value="zh">中文</option> 
+                <option value="ja">日本語</option> 
             </select>
         </div>
 
-        <!-- <div class="user-area">
-            <div class="language-selector" tabindex="0" aria-label="Selecionar idioma" role="button"
-                aria-haspopup="listbox" aria-expanded="false">
-                <img src="https://flagcdn.com/br.svg" alt="Português (Brasil)" id="flag-img" />
-                <span id="language-name">Português</span>
-                <i class="arrow"></i>
-                <div class="language-options" role="listbox" aria-labelledby="language-name">
-                    <div data-lang="pt" role="option" tabindex="0"><img src="https://flagcdn.com/br.svg"
-                            alt="Português (Brasil)" /> Português</div>
-                    <div data-lang="en" role="option" tabindex="0"><img src="https://flagcdn.com/us.svg"
-                            alt="English (US)" /> English</div>
-                    <div data-lang="es" role="option" tabindex="0"><img src="https://flagcdn.com/es.svg"
-                            alt="Español" /> Español</div>
-                    <div data-lang="fr" role="option" tabindex="0"><img src="https://flagcdn.com/fr.svg"
-                            alt="Français" /> Français</div>
-                    <div data-lang="de" role="option" tabindex="0"><img src="https://flagcdn.com/de.svg"
-                            alt="Deutsch" /> Deutsch</div>
-                    <div data-lang="it" role="option" tabindex="0">
-                        <img src="https://flagcdn.com/it.svg" alt="Italiano" /> Italiano
-                    </div>
-                    <div data-lang="ja" role="option" tabindex="0">
-                        <img src="https://flagcdn.com/jp.svg" alt="日本語" /> 日本語
-                    </div>
-                    <div data-lang="ru" role="option" tabindex="0">
-                        <img src="https://flagcdn.com/ru.svg" alt="Русский" /> Русский
-                    </div>
-                    <div data-lang="zh" role="option" tabindex="0">
-                        <img src="https://flagcdn.com/cn.svg" alt="中文" /> 中文
-                    </div>
-                    <div data-lang="ar" role="option" tabindex="0" dir="rtl">
-                        <img src="https://flagcdn.com/sa.svg" alt="العربية" /> العربية
-                    </div>
-                </div>
-            </div> -->
-
+        <div class="user-area">
             <svg class="user-icon" role="button" aria-label="Área do usuário - Login ou Logout" tabindex="0"
                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path
                     d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
             </svg>
-
             <div class="user-dropdown" role="menu" aria-hidden="true">
                 <button data-key="loginTitle" id="btnLogin" role="menuitem">Logar</button>
                 <button id="btnLogout" role="menuitem" style="display:none;" data-key="deslogarTitle">Deslogar</button>
             </div>
         </div>
     </header>
-    <section>
-        <p>Teste tela Bolsas</p>
-    </section>
 
-    <!-- Bootstrap js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <main class="container mt-4 mb-2">
+        <div class="container-filtros-bolsas">
+            <h2 class="text-center mb-4" style="color: #005b96;">Encontre Bolsas de Estudo</h2>
+            <div class="filtros-grid">
+                <label for="selCategoriaBolsa" class="form-label">Filtrar por categoria:</label>
+                <select id="selCategoriaBolsa" class="form-select">
+                    <option value="">Selecione uma categoria...</option>
+                    </select>
+
+                <label for="selEstadoBolsa" class="form-label">Filtrar por estado:</label>
+                <select id="selEstadoBolsa" class="form-select">
+                    <option value="">Selecione um estado...</option>
+                    </select>
+
+                <label for="selModeloCurso" class="form-label">Modelo de curso:</label>
+                <select id="selModeloCurso" class="form-select">
+                    <option value="">Selecione um modelo...</option>
+                    </select>
+            </div>
+            <button id="btnFiltrarBolsas" class="btn-filtrar-bolsas">Filtrar Bolsas</button>
+        </div>
+
+        <div id="listaBolsas" class="lista-bolsas mt-4">
+            </div>
+
+        <div class="paginacao-container">
+            <button id="btnPaginaAnteriorBolsas" class="btn-pagina" disabled>Anterior</button>
+            <span id="paginaAtualBolsas" class="pagina-atual">Página 1</span>
+            <button id="btnPaginaProximaBolsas" class="btn-pagina" disabled>Próxima</button>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

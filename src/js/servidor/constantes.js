@@ -9,3 +9,8 @@ export const NOVO = 'novo';
 // empresas
 export const EMPRESA = 'empresas'
 export const LISTAREM = 'listar-empresas'
+
+
+// bolsas
+export const BOLSAS = 'bolsas';
+export const LISTARBOL = 'listar-bolsas'
