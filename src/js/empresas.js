@@ -63,9 +63,9 @@ const desativarBotoes = (elsHtml, paginaAtual, qntPagina) => {
 const colocarFiltrosSelect = async (elsHtml) => {
     try {
         // produção
-        const resposta = await fetch('https://abi-frontend-mu.vercel.app/src/json/filtroEmpresas.json');
+        const resposta = await fetch('https://abi-frontend-mu.vercel.app/src/json/filtros.json');
         // dev
-        // const resposta = await fetch('../json/filtroEmpresas.json');
+        // const resposta = await fetch('../json/filtros.json');
         
         if (!resposta.ok) {
             throw new Error(await resposta.json().message);
