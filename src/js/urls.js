@@ -11,7 +11,7 @@ export const BOLSAS = 'https://abi-frontend-mu.vercel.app/src/paginas/Bolsas.htm
 
 export const EMPRESAS = 'https://abi-frontend-mu.vercel.app/src/paginas/Empresas.html'
 
-export const PSICOLOGIA = 'https://abi-frontend-mu.vercel.app/src/paginas/Pisicologia.html'
+export const PSICOLOGIA = 'https://abi-frontend-mu.vercel.app/src/paginas/Psicologia.html'
 
 export const SAUDE = 'https://abi-frontend-mu.vercel.app/src/paginas/Saude.html'
 
