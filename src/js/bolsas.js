@@ -26,7 +26,6 @@ const aplicarDadosBolsas = (bolsas, elsHtml, paginaAtual) => {
 
     // passa por cada bolsa
     bolsas.forEach(bolsa => {
-        console.log(bolsa);
         // cria uma div
         const div = document.createElement('div');
         // adiciona a classe bolsa-item (CSS precisará ser criado/ajustado)
