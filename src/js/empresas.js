@@ -76,7 +76,7 @@ const colocarFiltrosSelect = async (elsHtml) => {
         
         // faz um loop pelas categorias, categoria vai ser um array:
         // ['chave', 'valor']
-        Object.entries(json.categorias).forEach(categoria => {
+        Object.entries(json.empresas.categorias).forEach(categoria => {
             // cria um elemento option
             const opt = document.createElement('option');
             // coloca o valor dele como a chave
