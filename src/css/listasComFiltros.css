@@ -81,12 +81,19 @@
     padding-bottom: 60px; /* Espaço para o botão, ajustar se necessário */
 }
 
+.desativado {
+    background-color: rgb(233, 233, 213);
+}
+
 .item-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .item-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin: 0 0 10px;
     font-size: 1.3rem;
     color: #005b96; /* Azul escuro para títulos */
@@ -101,6 +108,22 @@
 
 .item-card p strong {
     color: #333;
+}
+
+.bolinha-verde {
+    display: inline-block;
+    background-color: green;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+
+.bolinha-vermelha {
+    display: inline-block;
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
 }
 
 /* "More Info" button inside item cards */

@@ -1,4 +1,5 @@
 import { pegarUnisEstado } from "./servidor/universidadeHandler.js";
+import { pegarHorariosOcupados } from "./servidor/agendamentoHandler.js";
 import { carregar } from './utilidades/carregando.js'
 
 const colocarFiltrosSelect = async (elsHtml) => {
@@ -77,6 +78,54 @@ const verificarDataInput = (dataInputString) => {
     return true; // A data do input é igual ou maior que a data atual
 }
 
+const criarCardTempo = (elsHtml, horaInicial, horaFinal, marcacoes) => {
+
+    marcacoes = [
+        '12:00'
+    ]
+
+    const criarCard = (horaString) => {
+        // cria uma nova div
+        const cardTempo = document.createElement('div');
+        // faz o html do card
+        cardTempo.innerHTML = `
+            <h3>${horaString} <span class="${marcacoes.includes(horaString) ? 'bolinha-vermelha' : 'bolinha-verde'}"></span></h3>
+            <p><strong>${marcacoes.includes(horaString) ? 'Indisponivel' : 'Disponivel'}</strong></p>
+        `
+        // se o tempo já foi marcado
+        if (marcacoes.includes(horaString)) {
+            cardTempo.classList.add('item-card', 'my-1', 'desativado');
+            // se o tempo esta disponivel
+        } else {
+            // cria o botão de agendar, não crio no innerhtml para poder adicionar o eventListener
+            const btn = document.createElement('button');
+            btn.classList.add('btn-mais-info');
+            btn.textContent = 'Agendar';
+            btn.addEventListener('click', () => agendar(horaString));
+
+            // adiciona a classe de card ao div
+            cardTempo.classList.add('item-card', 'my-1');
+            cardTempo.appendChild(btn);
+        }
+
+
+        // coloca na lista
+        elsHtml.listaHor.appendChild(cardTempo);
+    }
+
+    for (; horaInicial <= horaFinal; horaInicial++) {
+        criarCard(`${horaInicial.toLocaleString('pt-br', { minimumIntegerDigits: 2, useGrouping: false })}:00`)
+
+        if (horaInicial !== horaFinal) {
+            criarCard(`${horaInicial.toLocaleString('pt-br', { minimumIntegerDigits: 2, useGrouping: false })}:30`)
+        }
+    }
+}
+
+function agendar(string) {
+    console.log(string);
+}
+
 /**
  * Vai validar os inputs do usuário e determinar se o botão é clicavel ou não
  * @param {Object} elsHtml objeto contendo os elementos html da pagina
@@ -89,7 +138,7 @@ const validarFiltros = (elsHtml) => {
         elsHtml.btnFiltrar.disabled = true;
         return;
     }
-    
+
     // se a data selecionada não é valida
     if (!verificarDataInput(elsHtml.inData.value)) {
         // não ta valido
@@ -110,12 +159,13 @@ const validarFiltros = (elsHtml) => {
 document.addEventListener('DOMContentLoaded', () => {
     // pega os elementos que vamos usar
     const elsHtml = {
+        listaHor: document.getElementById('lista-horarios'),
         selEstado: document.getElementById('selEstadoPsicologia'),
         btnFiltrar: document.getElementById('btnFiltrarPsicologia'),
         selUni: document.getElementById('selUniPsicologia'),
         inData: document.getElementById('inDatePsicologia'),
         blocoUni: document.getElementsByClassName('uni'),
-        aviso : document.getElementById('aviso')
+        aviso: document.getElementById('aviso')
     };
 
     // torna invisivel os elementos relacionados a universidade
@@ -126,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // vai colocar os filtros no select
     colocarFiltrosSelect(elsHtml);
-
 
     // função que roda ao clicar no botão de filtro
     elsHtml.selEstado.addEventListener('change', async () => {
@@ -153,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     let opt = document.createElement('option');
                     // atribui os valores ao option
                     opt.value = uni.id;
-                    opt.textContent = uni.nome; 
+                    opt.textContent = uni.nome;
                     opt.id = `uni${index}`
                     // coloca o option no select
                     elsHtml.selUni.appendChild(opt);
@@ -166,6 +215,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         carregar(false);
+    });
+
+    // quando clicar no botão de ver horarios
+    elsHtml.btnFiltrar.addEventListener('click', async () => {
+        const marcacoes = await pegarHorariosOcupados(elsHtml.selUni.value, elsHtml.inData.value, 'psicologia')
+
+        criarCardTempo(elsHtml, 8, 18, marcacoes);
     })
 
     elsHtml.selUni.addEventListener('change', () => validarFiltros(elsHtml))

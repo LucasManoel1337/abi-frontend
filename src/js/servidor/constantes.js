@@ -19,3 +19,8 @@ export const LISTARBOL = 'listar-bolsas'
 export const UNIS = 'universidades';
 // buscar universidades
 export const BUSUNIS = 'buscar';
+
+// agendamentos
+export const AGEN = 'agendamentos';
+export const NOVOAGEN = 'novo';
+export const HOROCUPADO = 'horarios-ocupados';
