@@ -49,18 +49,20 @@ export const cadastrarNovoUsuario = async (usuario, senha) => {
  * @param {String} senha Senha do usuário
  */
 export const loginUsuario = async (usuario, senha) => {
-    let conteudoJson = {usuario : usuario, senha : senha};
-
+    
     try {
+        let conteudoJson = {usuario : usuario, senha : senha};
         const conteudoResposta = await mandarJsonHadler(conteudoJson, `${URL}/${LOGIN}`);
-
+        
         if (!conteudoResposta.ok) {
-            throw new Error(`${await conteudoResposta.text()}`);
+            let errorMessage = await conteudoResposta.json();
+
+            throw new Error(errorMessage.mensagem);
         }
-    } catch (err) {
-        console.error(err);
+        
+    } catch(err) {
+        alert(err);
     }
-
-
+    
     return await conteudoResposta.json();
 }
