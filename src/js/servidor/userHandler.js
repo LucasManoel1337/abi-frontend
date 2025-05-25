@@ -26,11 +26,21 @@ const mandarJsonHadler = async (conteudoJson, url) => {
  * @param {String} senha Senha do novo usuario
  */
 export const cadastrarNovoUsuario = async (usuario, senha) => {
-    let conteudoJson = {usuario : usuario, senha : senha};
+    let conteudoJson = {id : 0, usuario : usuario, senha : senha};
 
-    const conteudoResposta = await mandarJsonHadler(conteudoJson, `${URL}/${CADASTRO}/${NOVO}`);
+     try {
+        const conteudoResposta = await mandarJsonHadler(conteudoJson, `${URL}/${CADASTRO}/${NOVO}`);
 
-    return conteudoResposta;
+        console.log(conteudoResposta);
+        if (!conteudoResposta.ok) {
+            throw new Error(`${await conteudoResposta.text()} ${await conteudoResposta.json()}`);
+        }
+        
+        return conteudoResposta;
+    } catch (err) {
+        console.error(err);
+    }
+
 }
 
 /**
@@ -41,7 +51,16 @@ export const cadastrarNovoUsuario = async (usuario, senha) => {
 export const loginUsuario = async (usuario, senha) => {
     let conteudoJson = {usuario : usuario, senha : senha};
 
-    const conteudoResposta = await mandarJsonHadler(conteudoJson, `${URL}/${LOGIN}`);
+    try {
+        const conteudoResposta = await mandarJsonHadler(conteudoJson, `${URL}/${LOGIN}`);
+
+        if (!conteudoResposta.ok) {
+            throw new Error(`${await conteudoResposta.text()}`);
+        }
+    } catch (err) {
+        console.error(err);
+    }
+
 
     return await conteudoResposta.json();
 }

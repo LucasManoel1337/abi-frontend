@@ -46,13 +46,14 @@ botaoCadastrar.addEventListener('click', async () => {
     // valida se os inputs estão validos
     if (validarInput()) {
         carregar(true);
-        let respostaServer = await cadastrarNovoUsuario(inputEmail.value, inputSenha.value);
-
-        if (respostaServer.ok) {
+        
+        try {
+            await cadastrarNovoUsuario(inputEmail.value, inputSenha.value);
             window.location.replace(LOGIN);
-        } else {
+        } catch (err) {
+            console.error(err);
+            alert('erro ao cadastrar novo usuário:');
             carregar(false);
-            alert('Erro na tentativa de criar conta, tente novamente');
         }
     }
 });
