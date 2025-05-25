@@ -14,3 +14,8 @@ export const LISTAREM = 'listar-empresas'
 // bolsas
 export const BOLSAS = 'bolsas';
 export const LISTARBOL = 'listar-bolsas'
+
+// universidades
+export const UNIS = 'universidades';
+// buscar universidades
+export const BUSUNIS = 'buscar';
