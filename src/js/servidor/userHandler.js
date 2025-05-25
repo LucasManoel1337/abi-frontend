@@ -60,9 +60,9 @@ export const loginUsuario = async (usuario, senha) => {
             throw new Error(errorMessage.mensagem);
         }
         
+        return await conteudoResposta.json();
     } catch(err) {
         alert(err);
     }
     
-    return await conteudoResposta.json();
 }
