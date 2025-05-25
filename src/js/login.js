@@ -20,11 +20,12 @@ botaoLogin.addEventListener('click', async () => {
         try {
             // chama função que loga usuário
             let resposta = await loginUsuario(inputEmail.value, inputSenha.value);
-    
+                
             localStorage.setItem('idUsuario', resposta.id);
     
             window.location.replace(INDEX);
         } catch(err) {
+            console.log(err);
             carregar(false);
         }
     }
