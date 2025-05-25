@@ -135,25 +135,26 @@ document.addEventListener('DOMContentLoaded', () => {
         // verifica se o usuário selecionou um estado
         if (elsHtml.selEstado.value !== '') {
             // TODO: terminar função de limpar as universidades
-            // // se tem universidades no selUni
-            // if (elsHtml.selUni.children.length > 1) {
-            //     // faz um loop por cada filho a partir do segundo elemento de selUni
-            //     for (let i = 1, n = elsHtml.selUni.children.length; i < n; i++) {
-            //         // remove o elemento, assim limpando selUni
-
-            //     }
-            // }
+            // se tem universidades no selUni
+            if (elsHtml.selUni.children.length > 1) {
+                // faz um loop por cada filho a partir do segundo elemento de selUni
+                for (let i = 1, j = 1, n = elsHtml.selUni.children.length; i < n; i++) {
+                    // remove o elemento, assim limpando selUni
+                    elsHtml.selUni.remove(j);
+                }
+            }
 
             try {
                 const unis = await pegarUnisEstado(elsHtml.selEstado.value);
 
                 // vai colocar as universidades disponiveis no select de universidades
-                unis.forEach(uni => {
+                unis.forEach((uni, index) => {
                     // cria o option
                     let opt = document.createElement('option');
                     // atribui os valores ao option
                     opt.value = uni.id;
-                    opt.textContent = uni.nome;
+                    opt.textContent = uni.nome; 
+                    opt.id = `uni${index}`
                     // coloca o option no select
                     elsHtml.selUni.appendChild(opt);
                 })
