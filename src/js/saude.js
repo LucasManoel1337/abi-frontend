@@ -149,8 +149,12 @@ const agendar = async ({
     carregar(false);
 }
 
-const resetar = async (elsHtml, nomeUni) => {
+const resetar = async (elsHtml, nomeUni, mudouEstado) => {
     elsHtml.listaHor.innerHTML = "";
+
+    if (mudouEstado) {
+        return false;
+    }
 
     if (elsHtml.inData.value === '' || elsHtml.selUni.value === '') {
         return false;
@@ -159,6 +163,7 @@ const resetar = async (elsHtml, nomeUni) => {
     if (!verificarDataInput(elsHtml.inData.value)) {
         return false;
     }
+
     
     const marcacoes = await pegarHorariosOcupados(elsHtml.selUni.value, elsHtml.inData.value, 'psicologia')
 
@@ -243,6 +248,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     elsHtml.selUni.remove(j);
                 }
             }
+
+            resetar(elsHtml, '', true);
+            jaClicou = false;
+            validarFiltros(elsHtml);
 
             try {
                 const unis = await pegarUnisEstado(elsHtml.selEstado.value);

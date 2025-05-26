@@ -150,8 +150,12 @@ const agendar = async ({
     carregar(false);
 }
 
-const resetar = async (elsHtml, nomeUni) => {
+const resetar = async (elsHtml, nomeUni, mudouEstado = false) => {
     elsHtml.listaHor.innerHTML = "";
+
+    if (mudouEstado) {
+        return false;
+    }
 
     if (elsHtml.inData.value === '' || elsHtml.selUni.value === '' || elsHtml.selMod.value === '') {
         return false;
@@ -245,6 +249,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     elsHtml.selUni.remove(j);
                 }
             }
+
+            resetar(elsHtml, '', true);
+            jaClicou = false;
+            validarFiltros(elsHtml);
 
             try {
                 const unis = await pegarUnisEstado(elsHtml.selEstado.value);
