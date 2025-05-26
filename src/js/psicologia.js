@@ -148,6 +148,8 @@ const agendar = async ({
     await resetar(elsHtml, obj.nomeUniversidade);
 
     carregar(false);
+
+    window.location.replace(AGEN);
 }
 
 const resetar = async (elsHtml, nomeUni, mudouEstado = false) => {

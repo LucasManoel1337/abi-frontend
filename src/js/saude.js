@@ -1,6 +1,7 @@
 import { pegarUnisEstado } from "./servidor/universidadeHandler.js";
 import { pegarHorariosOcupados, marcarHorario } from "./servidor/agendamentoHandler.js";
 import { carregar } from './utilidades/carregando.js'
+import { AGEN } from "./urls.js";
 
 const colocarFiltrosSelect = async (elsHtml) => {
     try {
@@ -147,6 +148,8 @@ const agendar = async ({
     await resetar(elsHtml, obj.nomeUniversidade);
 
     carregar(false);
+
+    window.location.replace(AGEN);
 }
 
 const resetar = async (elsHtml, nomeUni, mudouEstado) => {
