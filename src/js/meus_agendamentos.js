@@ -30,7 +30,7 @@ const fazerCardAgendamento = (elsHtml, agendamentos) => {
      * modelo
      * nomeUniversidade
      */
-     // se não tem agendamentos
+    // se não tem agendamentos
     if (!agendamentos || agendamentos.length === 0) {
         elsHtml.listaItems.innerHTML = '<p>Nenhum agendamento encontrado.</p>';
         return;
@@ -55,6 +55,14 @@ const fazerCardAgendamento = (elsHtml, agendamentos) => {
             const btnInfo = document.createElement('button');
             btnInfo.classList.add('btn-mais-info');
             btnInfo.textContent = 'Entrar na reunião';
+
+            // Substitua pelo link desejado
+            const linkDaReuniao = 'https://youtu.be/rC6r1ne-BZ0?si=Zitu9wEDI0jiiyfy';
+
+            btnInfo.addEventListener('click', () => {
+                window.location.href = linkDaReuniao;
+            });
+
             div.appendChild(btnInfo);
         }
 
@@ -76,7 +84,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // elementos html que vamos usar
     const elsHtml = {
-        listaItems : document.getElementById('lista-horarios')
+        listaItems: document.getElementById('lista-horarios')
     };
 
     // id do usuário
