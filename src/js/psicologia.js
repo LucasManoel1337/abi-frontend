@@ -153,6 +153,14 @@ const agendar = async ({
 const resetar = async (elsHtml, nomeUni) => {
     elsHtml.listaHor.innerHTML = "";
 
+    if (elsHtml.inData.value === '' || elsHtml.selUni.value === '' || elsHtml.selMod.value === '') {
+        return false;
+    }
+
+    if (!verificarDataInput(elsHtml.inData.value)) {
+        return false;
+    }
+    
     const marcacoes = await pegarHorariosOcupados(elsHtml.selUni.value, elsHtml.inData.value, 'psicologia')
 
     // configurações que serão usadas para enviar os dados
@@ -164,6 +172,8 @@ const resetar = async (elsHtml, nomeUni) => {
     }
 
     criarCardTempo(elsHtml, 8, 18, marcacoes, configsBase);
+
+    return true;
 }
 
 /**
@@ -210,6 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const universidades = {};
+    let jaClicou = false;
     // torna invisivel os elementos relacionados a universidade
     mudarDisplay(elsHtml.blocoUni, 'none');
 
@@ -278,10 +289,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
         elsHtml.listaHor.innerHTML = ""
         criarCardTempo(elsHtml, 8, 18, marcacoes, configsBase);
+
+        jaClicou = true;
         carregar(false);
     })
 
-    elsHtml.selUni.addEventListener('change', () => validarFiltros(elsHtml))
-    elsHtml.selMod.addEventListener('change', () => validarFiltros(elsHtml))
-    elsHtml.inData.addEventListener('change', () => validarFiltros(elsHtml))
+    elsHtml.selUni.addEventListener('change', async () => {
+        validarFiltros(elsHtml)
+        carregar(true);
+        if (jaClicou) {
+            jaClicou = await resetar(elsHtml, universidades[elsHtml.selUni.value]);
+        }
+        carregar(false);
+    })
+
+    elsHtml.selMod.addEventListener('change', async () => {
+        validarFiltros(elsHtml)
+        carregar(true);
+        if (jaClicou) {
+            jaClicou = await resetar(elsHtml, universidades[elsHtml.selUni.value]);
+        }
+        carregar(false);
+    })
+
+    elsHtml.inData.addEventListener('change', async () => {
+        validarFiltros(elsHtml)
+        carregar(true);
+        if (jaClicou) {
+            jaClicou = await resetar(elsHtml, universidades[elsHtml.selUni.value]);
+        }
+        carregar(false);
+    })
 })
