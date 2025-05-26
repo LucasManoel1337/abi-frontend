@@ -54,7 +54,7 @@ const fazerCardAgendamento = (elsHtml, agendamentos) => {
         if (agendamento.modelo === 'online') {
             const btnInfo = document.createElement('button');
             btnInfo.classList.add('btn-mais-info');
-            btnInfo.textContent = 'Entrar ma reunião';
+            btnInfo.textContent = 'Entrar na reunião';
             div.appendChild(btnInfo);
         }
 
