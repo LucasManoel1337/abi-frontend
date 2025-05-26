@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>ABI - Empresas</title>
+    <title data-key="pageTitleEmpresas">ABI - Empresas</title>
     <script type="module" src="../js/index.js"></script>
     <script type="module" src="../js/empresas.js"></script>
     <script src="../js/traduzir.js"></script>
@@ -20,28 +20,28 @@
 
     <main class="container mt-4 mb-2">
         <div class="container-filtros">
-            <h2 class="text-center mb-4" style="color: #005b96;">Encontre Empresas Parceiras</h2>
+            <h2 class="text-center mb-4" style="color: #005b96;" data-key="empresasPageHeader">Encontre Empresas Parceiras</h2>
             <div class="filtros-grid">
-                <label for="selCategoria" class="form-label">Filtrar por categoria:</label>
+                <label for="selCategoria" class="form-label" data-key="empresasFilterCategoriaLabel">Filtrar por categoria:</label>
                 <select id="selCategoria" class="form-select">
-                    <option value="">Selecione uma categoria...</option>
+                    <option value="" data-key="empresasSelectCategoriaDefault">Selecione uma categoria...</option>
                 </select>
 
-                <label for="selEstado" class="form-label">Filtrar por estado:</label>
+                <label for="selEstado" class="form-label" data-key="empresasFilterEstadoLabel">Filtrar por estado:</label>
                 <select id="selEstado" class="form-select">
-                    <option value="">Selecione um estado...</option>
+                    <option value="" data-key="empresasSelectEstadoDefault">Selecione um estado...</option>
                 </select>
             </div>
-            <button id="btnFiltrar" class="btn-filtrar-listas">Filtrar</button>
+            <button id="btnFiltrar" class="btn-filtrar-listas" data-key="empresasFilterButton">Filtrar</button>
         </div>
 
         <div id="listaEmpresas" class="lista-itens mt-4">
             </div>
 
         <div class="paginacao-container">
-            <button id="btnPaginaAnterior" class="btn-pagina" disabled>Anterior</button>
-            <span id="paginaAtual" class="pagina-atual">Página 1</span>
-            <button id="btnPaginaProxima" class="btn-pagina" disabled>Próxima</button>
+            <button id="btnPaginaAnterior" class="btn-pagina" disabled data-key="paginationPrevious">Anterior</button>
+            <span id="paginaAtual" class="pagina-atual" data-key="paginationCurrentPage">Página 1</span>
+            <button id="btnPaginaProxima" class="btn-pagina" disabled data-key="paginationNext">Próxima</button>
         </div>
     </main>
 

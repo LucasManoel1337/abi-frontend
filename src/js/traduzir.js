@@ -48,6 +48,7 @@ const carregarTraducao = async (lingua) => {
     try {
         // vai pegar os dados do arquivo da lingua
         const resposta = await fetch(`https://abi-frontend-mu.vercel.app/src/json/lang/${lingua}.json`);
+
         // se a resposta não está ok
         if (!resposta.ok) {
             throw new Error("Erro ao carregar traduções");
