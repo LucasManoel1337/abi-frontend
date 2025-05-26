@@ -37,13 +37,11 @@ export const marcarHorario = async ({
 
         if (!resposta.ok) {
             let erro = await resposta.text();
-            console.log(erro);
             throw new Error(erro.mensagem);
         }
 
-        console.log(resposta);
     } catch (err) {
-        console.log("Erro fazendo agendamento:", err);
+        console.error("Erro fazendo agendamento:", err);
     }
 
 }

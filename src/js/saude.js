@@ -124,13 +124,13 @@ const criarCardTempo = (elsHtml, horaInicial, horaFinal, marcacoes, configBase) 
 }
 
 const agendar = async ({
-    categoria = 'psicologia',
+    categoria = 'saude',
     idUsuario = '',
     idUniversidade = '',
     nomeUniversidade = '',
     data = '',
     horarioMarcado = '',
-    modelo = ''
+    modelo = 'presencial'
 } = obj, elsHtml) => {
     carregar(true);
     let obj = {
@@ -142,7 +142,6 @@ const agendar = async ({
         horarioMarcado: horarioMarcado,
         modelo: modelo
     }
-
     await marcarHorario(obj);
 
     await resetar(elsHtml, obj.nomeUniversidade);
@@ -153,7 +152,7 @@ const agendar = async ({
 const resetar = async (elsHtml, nomeUni) => {
     elsHtml.listaHor.innerHTML = "";
 
-    const marcacoes = await pegarHorariosOcupados(elsHtml.selUni.value, elsHtml.inData.value, 'psicologia')
+    const marcacoes = await pegarHorariosOcupados(elsHtml.selUni.value, elsHtml.inData.value, 'saude')
 
     // configurações que serão usadas para enviar os dados
     const configsBase = {
@@ -173,7 +172,7 @@ const resetar = async (elsHtml, nomeUni) => {
 const validarFiltros = (elsHtml) => {
 
     // se uma data ou universidade não tiver sido selecionada
-    if (elsHtml.inData.value === '' || elsHtml.selUni.value === '' || elsHtml.selMod.value === '') {
+    if (elsHtml.inData.value === '' || elsHtml.selUni.value === '') {
         // não ta valido
         elsHtml.btnFiltrar.disabled = true;
         return;
@@ -200,10 +199,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // pega os elementos que vamos usar
     const elsHtml = {
         listaHor: document.getElementById('lista-horarios'),
+        selEstado: document.getElementById('selEstado'),
         btnFiltrar: document.getElementById('btnFiltrar'),
         selUni: document.getElementById('selUni'),
-        selEstado: document.getElementById('selEstado'),
-        selMod : document.getElementById('selMod'),
         inData: document.getElementById('inDate'),
         blocoUni: document.getElementsByClassName('uni'),
         aviso: document.getElementById('aviso')
@@ -258,14 +256,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         carregar(false);
-
-        validarFiltros(elsHtml);
     });
 
     // quando clicar no botão de ver horarios
     elsHtml.btnFiltrar.addEventListener('click', async () => {
         carregar(true);
-        const marcacoes = await pegarHorariosOcupados(elsHtml.selUni.value, elsHtml.inData.value, 'psicologia')
+        const marcacoes = await pegarHorariosOcupados(elsHtml.selUni.value, elsHtml.inData.value, 'saude')
 
         // configurações que serão usadas para enviar os dados
         const configsBase = {
@@ -273,7 +269,6 @@ document.addEventListener('DOMContentLoaded', () => {
             idUniversidade: elsHtml.selUni.value,
             nomeUniversidade: universidades[elsHtml.selUni.value],
             data: elsHtml.inData.value,
-            modelo : elsHtml.selMod.value
         }
 
         elsHtml.listaHor.innerHTML = ""
@@ -282,6 +277,5 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     elsHtml.selUni.addEventListener('change', () => validarFiltros(elsHtml))
-    elsHtml.selMod.addEventListener('change', () => validarFiltros(elsHtml))
     elsHtml.inData.addEventListener('change', () => validarFiltros(elsHtml))
 })

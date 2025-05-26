@@ -26,26 +26,34 @@
             <div class="filtros-grid">
 
                 <!-- Estado -->
-                <label for="selEstadoPsicologia" class="form-label">Estado:</label>
-                <select id="selEstadoPsicologia" class="form-select">
+                <label for="selEstado" class="form-label">Estado:</label>
+                <select id="selEstado" class="form-select">
                     <option value="">Selecione um estado...</option>
                 </select>
 
                 <!-- Universidade -->
-                <label for="selUniPsicologia" class="form-label uni">Universidade:</label>
-                <select id="selUniPsicologia" class="form-select uni">
+                <label for="selUni" class="form-label uni">Universidade:</label>
+                <select id="selUni" class="form-select uni">
                     <option value="">Selecione uma universidade...</option>
+                </select>
+
+                <!-- Modelo -->
+                <label for="selMod" class="form-label uni">Modelo:</label>
+                <select id="selMod" class="form-select uni">
+                    <option value="">Selecione um modelo...</option>
+                    <option value="presencial">Presencial</option>
+                    <option value="online">Online</option>
                 </select>
                 
                 <!-- dia -->
-                <label for="inDatePsicologia" class="form-label uni">Dia:</label>
-                <input type="date" id="inDatePsicologia" class="form-control uni invalid" name="Data">
+                <label for="inDate" class="form-label uni">Dia:</label>
+                <input type="date" id="inDate" class="form-control uni invalid" name="Data">
             </div>
 
             <!-- aviso -->
             <div class="alert alert-danger" id="aviso"></div>
 
-            <button id="btnFiltrarPsicologia" class="btn-filtrar-listas" disabled>Ver horarios</button>
+            <button id="btnFiltrar" class="btn-filtrar-listas" disabled>Ver horarios</button>
         </div>
 
 
