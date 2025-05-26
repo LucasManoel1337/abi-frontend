@@ -1,5 +1,5 @@
 import { pegarUnisEstado } from "./servidor/universidadeHandler.js";
-import { pegarHorariosOcupados } from "./servidor/agendamentoHandler.js";
+import { pegarHorariosOcupados, marcarHorario } from "./servidor/agendamentoHandler.js";
 import { carregar } from './utilidades/carregando.js'
 
 const colocarFiltrosSelect = async (elsHtml) => {
@@ -78,11 +78,7 @@ const verificarDataInput = (dataInputString) => {
     return true; // A data do input é igual ou maior que a data atual
 }
 
-const criarCardTempo = (elsHtml, horaInicial, horaFinal, marcacoes) => {
-
-    marcacoes = [
-        '12:00'
-    ]
+const criarCardTempo = (elsHtml, horaInicial, horaFinal, marcacoes, configBase) => {
 
     const criarCard = (horaString) => {
         // cria uma nova div
@@ -97,11 +93,16 @@ const criarCardTempo = (elsHtml, horaInicial, horaFinal, marcacoes) => {
             cardTempo.classList.add('item-card', 'my-1', 'desativado');
             // se o tempo esta disponivel
         } else {
+            // faz uma copia da configuração para evitar erro de referencia
+            let copiaConfig = JSON.parse(JSON.stringify(configBase));
+            // adiciona o horario marcado
+            copiaConfig['horarioMarcado'] = horaString;
+
             // cria o botão de agendar, não crio no innerhtml para poder adicionar o eventListener
             const btn = document.createElement('button');
             btn.classList.add('btn-mais-info');
             btn.textContent = 'Agendar';
-            btn.addEventListener('click', () => agendar(horaString));
+            btn.addEventListener('click', () => agendar(copiaConfig, elsHtml));
 
             // adiciona a classe de card ao div
             cardTempo.classList.add('item-card', 'my-1');
@@ -122,8 +123,46 @@ const criarCardTempo = (elsHtml, horaInicial, horaFinal, marcacoes) => {
     }
 }
 
-function agendar(string) {
-    console.log(string);
+const agendar = async ({
+    categoria = 'psicologia',
+    idUsuario = '',
+    idUniversidade = '',
+    nomeUniversidade = '',
+    data = '',
+    horarioMarcado = '',
+    modelo = 'presencial'
+} = obj, elsHtml) => {
+    carregar(true);
+    let obj = {
+        categoria: categoria,
+        idUsuario: idUsuario,
+        idUniversidade: idUniversidade,
+        nomeUniversidade: nomeUniversidade,
+        data: data,
+        horarioMarcado: horarioMarcado,
+        modelo: modelo
+    }
+    await marcarHorario(obj);
+
+    await resetar(elsHtml, obj.nomeUniversidade);
+
+    carregar(false);
+}
+
+const resetar = async (elsHtml, nomeUni) => {
+    elsHtml.listaHor.innerHTML = "";
+
+    const marcacoes = await pegarHorariosOcupados(elsHtml.selUni.value, elsHtml.inData.value, 'psicologia')
+
+    // configurações que serão usadas para enviar os dados
+    const configsBase = {
+        idUsuario: localStorage.getItem('idUsuario'),
+        idUniversidade: elsHtml.selUni.value,
+        nomeUniversidade: nomeUni,
+        data: elsHtml.inData.value,
+    }
+
+    criarCardTempo(elsHtml, 8, 18, marcacoes, configsBase);
 }
 
 /**
@@ -168,6 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         aviso: document.getElementById('aviso')
     };
 
+    const universidades = {};
     // torna invisivel os elementos relacionados a universidade
     mudarDisplay(elsHtml.blocoUni, 'none');
 
@@ -198,6 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // vai colocar as universidades disponiveis no select de universidades
                 unis.forEach((uni, index) => {
+                    universidades[uni.id] = uni.nome;
                     // cria o option
                     let opt = document.createElement('option');
                     // atribui os valores ao option
@@ -219,9 +260,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // quando clicar no botão de ver horarios
     elsHtml.btnFiltrar.addEventListener('click', async () => {
+        carregar(true);
         const marcacoes = await pegarHorariosOcupados(elsHtml.selUni.value, elsHtml.inData.value, 'psicologia')
 
-        criarCardTempo(elsHtml, 8, 18, marcacoes);
+        // configurações que serão usadas para enviar os dados
+        const configsBase = {
+            idUsuario: localStorage.getItem('idUsuario'),
+            idUniversidade: elsHtml.selUni.value,
+            nomeUniversidade: universidades[elsHtml.selUni.value],
+            data: elsHtml.inData.value,
+        }
+
+        elsHtml.listaHor.innerHTML = ""
+        criarCardTempo(elsHtml, 8, 18, marcacoes, configsBase);
+        carregar(false);
     })
 
     elsHtml.selUni.addEventListener('change', () => validarFiltros(elsHtml))
