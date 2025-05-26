@@ -13,6 +13,8 @@ export const EMPRESAS = 'https://abi-frontend-mu.vercel.app/src/paginas/Empresas
 
 export const PSICOLOGIA = 'https://abi-frontend-mu.vercel.app/src/paginas/Psicologia.html'
 
+export const AGEN = 'https://abi-frontend-mu.vercel.app/src/paginas/Meus_agendamentos.html'
+
 export const SAUDE = 'https://abi-frontend-mu.vercel.app/src/paginas/Saude.html'
 
 export const LOGO = 'https://abi-frontend-mu.vercel.app/assets/images/AIBicon.png'

@@ -1,4 +1,4 @@
-import { GUIA, INDEX, LOGIN, SOBRE } from "./urls.js";
+import { GUIA, INDEX, LOGIN, SOBRE, AGEN } from "./urls.js";
 import { verificar } from './utilidades/verificarLogin.js'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
         userIcon: document.querySelector('.user-icon'),
         userDropdown: document.querySelector('.user-dropdown'),
         btnLogin: document.getElementById('btnLogin'),
-        btnLogout: document.getElementById('btnLogout')
+        btnLogout: document.getElementById('btnLogout'),
+        btnAgen : document.getElementById('btnAgendamentos')
     };
 
 
@@ -53,6 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // manda para a pagina index
             window.location.replace(INDEX);
         }
+    });
+
+    selectors.btnAgen.addEventListener('click', () => {
+        window.location.replace(AGEN);
     });
 
     // Suporte a teclado

@@ -24,3 +24,6 @@ export const BUSUNIS = 'buscar';
 export const AGEN = 'agendamentos';
 export const NOVOAGEN = 'novo';
 export const HOROCUPADO = 'horarios-ocupados';
+// buscar agendamento
+export const BUSAGEN = `buscar-agendamentos`;
+export const CANCELARAGEN = `cancelar-agendamento`;

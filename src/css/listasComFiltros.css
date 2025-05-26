@@ -72,7 +72,7 @@
 
 /* Individual item card */
 .item-card {
-    padding: 20px 25px;
+    padding: 10px 25px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     background-color: #ffffff;
@@ -143,9 +143,36 @@
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* "Cancel" button inside item cards */
+.btn-cancelar {
+    position: absolute;
+    bottom: 15px;
+    right: 15px; /* Default position, aligns to the right like .btn-mais-info */
+    background-color: #dc3545; /* Vermelho Bootstrap 'danger' */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(220, 53, 69, 0.6); /* Sombra baseada na cor vermelha */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* If .item-card also has a .btn-mais-info, then move .btn-cancelar to the left */
+.item-card:has(.btn-mais-info) .btn-cancelar {
+    right: 175px; /* Posicionado à esquerda do .btn-mais-info (15px + ~150px width + 10px gap) */
+}
+
 .btn-mais-info:hover {
     background-color: #b5891d; /* dourado mais escuro no hover */
     box-shadow: 0 4px 10px rgba(212, 175, 55, 0.8);
+}
+
+.btn-cancelar:hover {
+    background-color: #c82333; /* Vermelho mais escuro no hover */
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.8); /* Sombra mais forte no hover */
 }
 
 /* Pagination styles */

@@ -76,6 +76,7 @@ class AppHeader extends HTMLElement {
                                 </svg>
                                 <div class="user-dropdown position-absolute bg-white rounded shadow-sm py-1" id="user-dropdown" role="menu" aria-hidden="true">
                                     <button class="dropdown-item" data-key="loginTitle" id="btnLogin" role="menuitem">Logar</button>
+                                    <button class="dropdown-item" data-key="meusAgen" id="btnAgendamentos" role="menuitem" style="display:none">Meus agendamentos</button>
                                     <button class="dropdown-item" id="btnLogout" role="menuitem" style="display:none;" data-key="deslogarTitle">Deslogar</button>
                                 </div>
                             </div>

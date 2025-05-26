@@ -14,8 +14,10 @@ export const verificar = () => {
         // pega os botões de logar / deslogar
         const botaoLogout = document.getElementById('btnLogout');
         const botaoLogin = document.getElementById('btnLogin');
+        const botaoAgen = document.getElementById('btnAgendamentos');
         // ativa o de deslogar e desativa o de logar
         botaoLogout.style.display = 'block';
+        botaoAgen.style.display = 'block';
         botaoLogin.style.display = 'none';
         return;
     }
