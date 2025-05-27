@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title data-key="pageTitleBolsas">ABI - Bolsas</title>
+    <title>ABI - Bolsas<span data-key="bolsas"></span></title>
     <script type="module" src="../js/index.js" defer></script>
     <script type="module" src="../js/bolsas.js" defer></script>
     <script src="../js/traduzir.js"></script>
@@ -18,32 +18,53 @@
 <body>
 
     <app-header></app-header>
+
     <main class="container mt-4 mb-2">
-        <div class="container-filtros"> <h2 class="text-center mb-4" style="color: #005b96;" data-key="bolsasPageHeader">Encontre Bolsas de Estudo</h2>
+        <div class="container-filtros">
+            <h2 class="text-center mb-4" style="color: #005b96;" data-key="tituloBolsas">
+                Encontre Bolsas de Estudo
+            </h2>
+
             <div class="filtros-grid">
-                <label for="selCategoriaBolsa" class="form-label" data-key="bolsasFilterCategoriaLabel">Filtrar por categoria:</label>
+                <label for="selCategoriaBolsa" class="form-label" data-key="filtroCategoria">
+                    Filtrar por categoria:
+                </label>
                 <select id="selCategoriaBolsa" class="form-select">
-                    <option value="" data-key="bolsasSelectCategoriaDefault">Selecione uma categoria...</option>
+                    <option value="" data-key="selecioneCategoria">Selecione uma categoria...</option>
                 </select>
 
-                <label for="selEstadoBolsa" class="form-label" data-key="bolsasFilterEstadoLabel">Filtrar por estado:</label>
+                <label for="selEstadoBolsa" class="form-label" data-key="filtroEstado">
+                    Filtrar por estado:
+                </label>
                 <select id="selEstadoBolsa" class="form-select">
-                    <option value="" data-key="bolsasSelectEstadoDefault">Selecione um estado...</option>
+                    <option value="" data-key="selecioneEstado">Selecione um estado...</option>
                 </select>
 
-                <label for="selModeloCurso" class="form-label" data-key="bolsasFilterModeloLabel">Modelo de curso:</label>
+                <label for="selModeloCurso" class="form-label" data-key="filtroModelo">
+                    Modelo de curso:
+                </label>
                 <select id="selModeloCurso" class="form-select">
-                    <option value="" data-key="bolsasSelectModeloDefault">Selecione um modelo...</option>
+                    <option value="" data-key="selecioneModelo">Selecione um modelo...</option>
                 </select>
             </div>
-            <button id="btnFiltrarBolsas" class="btn-filtrar-listas" data-key="bolsasFilterButton">Filtrar Bolsas</button> </div>
 
-        <div id="listaBolsas" class="lista-itens mt-4"> </div>
+            <button id="btnFiltrarBolsas" class="btn-filtrar-listas" data-key="botaoFiltrar">
+                Filtrar Bolsas
+            </button>
+        </div>
+
+        <div id="listaBolsas" class="lista-itens mt-4"></div>
 
         <div class="paginacao-container">
-            <button id="btnPaginaAnteriorBolsas" class="btn-pagina" disabled data-key="paginationPrevious">Anterior</button>
-            <span id="paginaAtualBolsas" class="pagina-atual" data-key="paginationCurrentPage">Página 1</span>
-            <button id="btnPaginaProximaBolsas" class="btn-pagina" disabled data-key="paginationNext">Próxima</button>
+            <button id="btnPaginaAnteriorBolsas" class="btn-pagina" disabled data-key="anterior">
+                Anterior
+            </button>
+            <span id="paginaAtualBolsas" class="pagina-atual">
+                Página 1
+            </span>
+            <button id="btnPaginaProximaBolsas" class="btn-pagina" disabled data-key="proxima">
+                Próxima
+            </button>
         </div>
     </main>
 
