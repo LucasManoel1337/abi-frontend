@@ -57,7 +57,7 @@ const fazerCardAgendamento = (elsHtml, agendamentos) => {
             btnInfo.textContent = 'Entrar na reunião';
 
             // Substitua pelo link desejado
-            const linkDaReuniao = 'https://youtu.be/rC6r1ne-BZ0?si=Zitu9wEDI0jiiyfy';
+            //const linkDaReuniao = 'https://youtu.be/rC6r1ne-BZ0?si=Zitu9wEDI0jiiyfy';
 
             btnInfo.addEventListener('click', () => {
                 window.location.href = linkDaReuniao;
